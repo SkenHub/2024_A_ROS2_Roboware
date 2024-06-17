@@ -1,4 +1,3 @@
-# serial_to_position_node.py
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float32MultiArray
@@ -10,7 +9,7 @@ class SerialToPositionNode(Node):
         super().__init__('serial_to_position_node')
         self.ser = serial.Serial("/dev/ttyACM0", baudrate=9600)
         self.publisher_ = self.create_publisher(Float32MultiArray, 'robot_position', 10)
-        self.timer = self.create_timer(0.1, self.timer_callback)
+        self.create_timer(0.1, self.timer_callback)
 
     def timer_callback(self):
         if self.ser.in_waiting >= 12:  # 12バイトデータを期待
