@@ -17,8 +17,8 @@ class CmdVelToSerialNode(Node):
 
         # 速度、方向、角度、モード、動作番号を変換
         speed = msg.data[0]
-        direction = int(msg.data[1])
-        angle = int(msg.data[2])
+        direction = msg.data[1]
+        angle = msg.data[2]
         team_color = int(msg.data[3])
         action_number = int(msg.data[4])
 
