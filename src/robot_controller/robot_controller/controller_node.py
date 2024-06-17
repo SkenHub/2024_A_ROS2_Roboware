@@ -3,7 +3,6 @@ from rclpy.node import Node
 from std_msgs.msg import String, Float32MultiArray
 import json
 import math
-import time
 
 class ControllerNode(Node):
     def __init__(self):
@@ -21,48 +20,44 @@ class ControllerNode(Node):
             '2': [5000, 3000, 90],
             '3': [5000, 3000, 180]
         }
-        self.current_position = [0, 0, 0]  # 初期位置 [x, y, theta]
-        self.max_speed = 100  # 最大速度
-        self.acceleration = 10  # 加速度
+        self.current_position = [0.0, 0.0, 0.0]  # 初期位置 [x, y, theta]
+        self.max_speed = 1.0  # 最大速度 [m/s]
 
     def listener_callback(self, msg):
-        # 受け取ったデータをパース
-        try:
-            data = json.loads(msg.data)
-            point = data.get('point')
+        data = msg.data.split(',')
+        actions = list(map(int, data[:5]))
+        positions = list(map(int, data[5:8]))
+        team_color = int(data[8])
+        emergency_stop = int(data[9])
 
-            if point in self.locations:
-                target = self.locations[point]
-                self.move_to_target(target)
-            else:
-                self.get_logger().info(f"Unknown point: {point}")
-        except json.JSONDecodeError as e:
-            self.get_logger().error(f"Failed to parse JSON: {str(e)}")
+        # 非常停止処理
+        if emergency_stop == 1:
+            self.send_velocity_command(0.0, 0.0, 0.0, team_color, 0)
+            return
 
-    def move_to_target(self, target):
+        # 指定された位置に移動する
+        if any(positions):
+            for i, pos in enumerate(positions):
+                if pos == 1:
+                    target = self.locations[str(i + 1)]
+                    self.move_to_target(target, team_color, actions[i])
+                    break
+
+    def move_to_target(self, target, team_color, action_number):
         x, y, theta = target
         dx = x - self.current_position[0]
         dy = y - self.current_position[1]
-        distance = math.sqrt(dx**2 + dy**2)
+        distance = math.sqrt(dx**2 + dy**2) / 1000.0  # 距離をメートルに変換
         direction = math.degrees(math.atan2(dy, dx)) % 360
 
-        max_distance = 5000
-        target_speed = min(self.max_speed, (distance / max_distance) * self.max_speed)
+        # 最大速度を設定
+        speed = min(self.max_speed, distance)
 
-        current_speed = 0
-        while current_speed < target_speed:
-            current_speed += self.acceleration
-            if current_speed > target_speed:
-                current_speed = target_speed
-            self.send_velocity_command(current_speed, direction, theta)
-            time.sleep(0.1)
+        self.send_velocity_command(speed, direction, theta, team_color, action_number)
 
-        self.send_velocity_command(target_speed, direction, theta)
-        self.get_logger().info(f"Moving to {target} with target speed: {target_speed}")
-
-    def send_velocity_command(self, speed, direction, theta):
+    def send_velocity_command(self, speed, direction, theta, team_color, action_number):
         msg = Float32MultiArray()
-        msg.data = [speed, direction, theta]
+        msg.data = [speed, direction, theta, team_color, action_number]
         self.publisher_.publish(msg)
         self.get_logger().info(f"Sent velocity command: {msg.data}")
 

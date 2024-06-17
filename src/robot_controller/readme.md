@@ -14,14 +14,14 @@
 ## 通信の概要
 ### トピック
 - `/web_socket_pub` (`std_msgs/String`)：WebSocketノードからの指示をパブリッシュ。
-- `/cmd_vel` (`std_msgs/Float32MultiArray`)：`controller_node`が計算した移動指示（速度、方向、角度）をパブリッシュ。
+- `/cmd_vel` (`std_msgs/Float32MultiArray`)：`controller_node`が計算した移動指示（速度、方向、角度、モード、動作番号）をパブリッシュ。
 - `/robot_position` (`std_msgs/Float32MultiArray`)：マイコンからのロボットの自己位置（x, y, θ）。例：`[1500.0, 1500.0, 0.0]`。
 - `/realsense_position` (`std_msgs/Float32MultiArray`)：リアルセンスのロボットの自己位置（x, y, θ）。例：`[1500.0, 1500.0, 0.0]`。
 - `/estimated_position` (`std_msgs/Float32MultiArray`)：推定したロボットの自己位置（x, y, θ）。例：`[2000.0, 1800.0, 0.0]`。
 
 ### メッセージの内容
-- `/web_socket_pub`：JSON形式の文字列。例：`{"point": "1"}`。
-- `/cmd_vel`：速度（0-100）、方向（0-359度）、角度（0-359度）。例：`[100, 45, 90]`。
+- `/web_socket_pub`：文字列形式のデータ。例：`"1,0,0,0,1,1,0,0,1,0"`。
+- `/cmd_vel`：速度（m/s）、方向（0-359度）、角度（0-359度）、モード（0または1）、動作番号。例：`[1.0, 45, 90, 1, 2]`。
 - `/robot_position`：マイコンからのロボットの自己位置（x, y, θ）。例：`[1500.0, 1500.0, 0.0]`。
 - `/realsense_position`：リアルセンスのロボットの自己位置（x, y, θ）。例：`[1500.0, 1500.0, 0.0]`。
 - `/estimated_position`：推定したロボットの自己位置（x, y, θ）。例：`[2000.0, 1800.0, 0.0]`。

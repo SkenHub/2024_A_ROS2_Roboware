@@ -15,13 +15,15 @@ class CmdVelToSerialNode(Node):
     def listener_callback(self, msg):
         self.get_logger().info(f"Received: {msg.data}")
 
-        # 速度、方向、角度を整数に変換
-        speed = int(msg.data[0])
+        # 速度、方向、角度、モード、動作番号を変換
+        speed = msg.data[0]
         direction = int(msg.data[1])
         angle = int(msg.data[2])
+        team_color = int(msg.data[3])
+        action_number = int(msg.data[4])
 
-        # 整数値をバイト配列に変換
-        send_data = struct.pack('BBB', speed, direction, angle)
+        # 変換されたデータをバイト配列に変換
+        send_data = struct.pack('fffBB', speed, direction, angle, team_color, action_number)
         self.ser.write(send_data)
         self.get_logger().info(f"Sent to Serial: {list(send_data)}")
 

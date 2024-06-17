@@ -3,6 +3,7 @@ from rclpy.node import Node
 from std_msgs.msg import Float32MultiArray
 
 import serial
+import struct
 
 class SerialToPositionNode(Node):
     def __init__(self):
@@ -12,10 +13,10 @@ class SerialToPositionNode(Node):
         self.create_timer(0.1, self.timer_callback)
 
     def timer_callback(self):
-        if self.ser.in_waiting >= 12:  # 12バイトデータを期待
-            received_data = list(self.ser.read(12))
-            position_data = [d / 100.0 for d in received_data]  # データをスケールバック
-            msg = Float32MultiArray(data=position_data)
+        if self.ser.in_waiting >= 20:  # 20バイトデータを期待
+            received_data = list(self.ser.read(20))
+            position_data = struct.unpack('fffBB', bytes(received_data))
+            msg = Float32MultiArray(data=position_data[:3])
             self.publisher_.publish(msg)
             self.get_logger().info(f"Received from Serial and Published: {msg.data}")
 
