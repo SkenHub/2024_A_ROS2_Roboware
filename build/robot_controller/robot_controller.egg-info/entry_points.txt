@@ -1,0 +1,5 @@
+[console_scripts]
+cmd_vel_to_serial_node = robot_controller.cmd_vel_to_serial_node:main
+controller_node = robot_controller.controller_node:main
+serial_to_position_node = robot_controller.serial_to_position_node:main
+
