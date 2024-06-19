@@ -47,6 +47,20 @@
 ### `web_socket_node`
 - WebSocket通信を介してコントローラーからの指示を受け取る。
 - 受け取った指示を`/web_socket_pub`トピックにパブリッシュ。
+- fastapi、uvicorn をインストールする必要がある。
+```bash
+pip install fastapi
+pip install uvicorn
+```
+- R1_UIの294行目のipアドレスとポートを実際に使用する番号に変える必要がある。
+```bash
+const ws = new WebSocket("ws://ipアドレス:ポート/ws");
+```
+- web_socket_node.pyの13,14行目も実際に使用する番号に変える必要がある。
+```bash
+ipadress_ = 'ipアドレス'
+port_ = ポート
+```
 
 ### `controller_node`
 - `web_socket_node`からの指示を受け取り、指定された地点に移動するための速度、方向、および角度を計算。
