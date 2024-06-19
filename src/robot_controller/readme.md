@@ -52,7 +52,7 @@
 pip install fastapi
 pip install uvicorn
 ```
-- R1_UIの294行目のipアドレスとポートを実際に使用する番号に変える必要がある。
+- R1_UI.txtの294行目のipアドレスとポートを実際に使用する番号に変える必要がある。
 ```bash
 const ws = new WebSocket("ws://ipアドレス:ポート/ws");
 ```
