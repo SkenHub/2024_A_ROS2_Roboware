@@ -32,7 +32,7 @@ class ControllerNode(Node):
 
         # 非常停止処理
         if emergency_stop == 1:
-            self.send_velocity_command(0.0, 0.0, 0.0, team_color, 0)
+            self.send_velocity_command(0.0, 0.0, 0.0, team_color, 255)
             return
 
         # 指定された位置に移動する
