@@ -12,7 +12,9 @@ resource/robot_controller
 robot_controller/__init__.py
 robot_controller/cmd_vel_to_serial_node.py
 robot_controller/controller_node.py
+robot_controller/realsense_position_node.py
 robot_controller/serial_to_position_node.py
+robot_controller/web_socket_node.py
 test/test_copyright.py
 test/test_flake8.py
 test/test_pep257.py

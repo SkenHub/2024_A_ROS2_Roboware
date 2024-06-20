@@ -83,5 +83,55 @@ port_ = ポート
 - シリアルポートの設定や接続には注意が必要です。正しいポートを指定してください。
 - WebSocketのIPアドレスとポートは環境に応じて変更してください。
 
+## 実行方法
+### 環境設定
+
+1. **ROS2 Humbleのソース**
+    ```bash
+    source /opt/ros/humble/setup.bash
+    source ~/ros2_robocon_ws/2024_A_ROS2_Roboware/install/setup.bash
+    ```
+
+2. **ROS2ワークスペースのビルド**
+    ```bash
+    cd ~/ros2_robocon_ws/2024_A_ROS2_Roboware
+    colcon build
+    source install/setup.bash
+    ```
+
+### ノードの実行コマンド
+
+各ノードを個別のターミナルウィンドウで実行します。
+
+1. **`web_socket_node` の実行**
+    ```bash
+    ros2 run robot_controller web_socket_node
+    ```
+
+2. **`controller_node` の実行**
+    ```bash
+    ros2 run robot_controller controller_node
+    ```
+
+3. **`cmd_vel_to_serial_node` の実行**
+    ```bash
+    ros2 run robot_controller cmd_vel_to_serial_node
+    ```
+
+4. **`serial_to_position_node` の実行**
+    ```bash
+    ros2 run robot_controller serial_to_position_node
+    ```
+
+5. **`realsense_position_node` の実行**
+    ```bash
+    ros2 run robot_controller realsense_position_node
+    ```
+
+### 確認手順
+1. 各ノードを個別のターミナルで起動します。
+2. `web_socket_node` が起動したら、Webブラウザを開き、`http://192.168.0.175:8000` にアクセスしてUIを確認します。
+
+
 ## ライセンス
 Apache License 2.0

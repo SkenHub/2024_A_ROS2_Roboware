@@ -291,17 +291,17 @@
     </div>
 
     <script>
-        const ws = new WebSocket("ws://192.168.0.175:8000/ws");
+        const ws = new WebSocket("ws://192.168.98.212:8080/ws");
 
-        let behavior = [0, 0, 0, 0, 0],behavior_count = [0, 0, 0, 0, 0],
-            button = [0, 0, 0],button_count = [0, 0, 0],
-            color = 0,STOP = 0,stop_count = 0,
-            minutes = 0,seconds = 0,millis = 0,interval = 0,count = 0,
-            position_x = 0,position_y = 0,position_direction;
+        let behavior = [0, 0, 0, 0, 0], behavior_count = [0, 0, 0, 0, 0],
+            button = [0, 0, 0], button_count = [0, 0, 0],
+            color = 0, STOP = 0, stop_count = 0,
+            minutes = 0, seconds = 0, millis = 0, interval = 0, count = 0,
+            position_x = 0, position_y = 0, position_direction;
 
-        let Send_Data = "",Receive_Data = "";
+        let Send_Data = "", Receive_Data = "";
 
-        const robot_size_x = 117,robot_size_y = 116.9
+        const robot_size_x = 117, robot_size_y = 116.9;
 
         const all = document.getElementById("all");
 
@@ -330,23 +330,23 @@
 
         const map = document.getElementById("map");
         const background = document.getElementById("background");
-        const start_zone= document.getElementById("start_zone");
+        const start_zone = document.getElementById("start_zone");
         const button_1 = document.getElementById("button1");
         const button_2 = document.getElementById("button2");
         const button_3 = document.getElementById("button3");
         const robot = document.getElementById("robot");
 
-        //初期設定
+        // 初期設定
         function setup() {
             all.style.backgroundColor = "rgb(0,0,0)";
-            button_color.style.display = "block"
+            button_color.style.display = "block";
             button_behavior.style.display = "none";
             Stop.style.display = "none";
             home.style.display = "none";
             timer.style.display = "none";
             position_debug.style.display = "none";
             map.style.display = "none";
-            //イベントリスナー追加
+            // イベントリスナー追加
             behavior_1.addEventListener("touchstart", Behavior_1);
             behavior_2.addEventListener("touchstart", Behavior_2);
             behavior_3.addEventListener("touchstart", Behavior_3);

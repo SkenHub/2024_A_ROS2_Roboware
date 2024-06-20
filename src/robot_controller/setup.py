@@ -20,11 +20,11 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'web_socket_node = robot_controller.web_socket_node:main',
             'controller_node = robot_controller.controller_node:main',
             'cmd_vel_to_serial_node = robot_controller.cmd_vel_to_serial_node:main',
             'serial_to_position_node = robot_controller.serial_to_position_node:main',
             'realsense_position_node = robot_controller.realsense_position_node:main',
-            'web_scoket_node = robot_controller.web_socket_node:main'
         ],
     },
 )
