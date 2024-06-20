@@ -1,31 +1,33 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float32MultiArray
-
 import serial
 import struct
 
 class CmdVelToSerialNode(Node):
     def __init__(self):
         super().__init__('cmd_vel_to_serial_node')
+
         self.ser = serial.Serial("/dev/ttyACM0", baudrate=9600)
         self.subscription = self.create_subscription(
-            Float32MultiArray, 'cmd_vel', self.listener_callback, 10)
+            Float32MultiArray,
+            'cmd_vel',
+            self.listener_callback,
+            10
+        )
 
     def listener_callback(self, msg):
-        self.get_logger().info(f"Received: {msg.data}")
-
-        # 速度、方向、角度、モード、動作番号を変換
-        speed = msg.data[0]
-        direction = msg.data[1]
-        angle = msg.data[2]
-        team_color = int(msg.data[3])
-        action_number = int(msg.data[4])
-
-        # 変換されたデータをバイト配列に変換
-        send_data = struct.pack('fffBB', speed, direction, angle, team_color, action_number)
-        self.ser.write(send_data)
-        self.get_logger().info(f"Sent to Serial: {list(send_data)}")
+        if len(msg.data) == 5:
+            speed, direction, theta, team_color, action_number = msg.data
+            speed = float(speed)
+            direction = float(direction)
+            theta = float(theta)
+            team_color = int(team_color)
+            action_number = int(action_number)
+            send_data = struct.pack('>BBfffBB', 0xA5, 0xA5, speed, direction, theta, team_color, action_number)
+            self.ser.write(send_data)
+            self.get_logger().info(f"Sent data: {msg.data}")
+            self.get_logger().info(f"Sent packed data: {send_data.hex()}")
 
 def main(args=None):
     rclpy.init(args=args)
