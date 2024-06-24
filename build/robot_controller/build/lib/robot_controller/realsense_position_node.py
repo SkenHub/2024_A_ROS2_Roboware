@@ -15,8 +15,8 @@ class RealSensePositionNode(Node):
 
         self.current_position = [0.0, 0.0, 0.0]  # 初期位置 [x, y, theta]
         self.realsense_position = [0.0, 0.0, 0.0]
-        self.realsense_weight = 1
-        self.microcontroller_weight = 2
+        self.realsense_weight = 0
+        self.microcontroller_weight = 1
 
         # RealSenseの初期化
         self.pipe = rs.pipeline()

@@ -15,19 +15,26 @@ class CmdVelToSerialNode(Node):
             self.listener_callback,
             10
         )
+        self.seq = 0  # 初期シーケンス番号
 
     def listener_callback(self, msg):
         if len(msg.data) == 5:
             speed, direction, theta, team_color, action_number = msg.data
-            speed = float(speed)
-            direction = float(direction)
-            theta = float(theta)
-            team_color = int(team_color)
-            action_number = int(action_number)
-            send_data = struct.pack('>BBfffBB', 0xA5, 0xA5, speed, direction, theta, team_color, action_number)
+            # データをパック
+            send_data = struct.pack('>BBfffBB', 0xA5, 0xA5, speed, direction, theta, int(team_color), int(action_number))
+            # シーケンス番号をインクリメントし、255を超えたら0にリセット
+            self.seq = (self.seq + 1) % 256
+            # チェックサムを計算（0xA5とシーケンス番号を除く）
+            checksum = sum(send_data[2:]) % 256
+            # シーケンス番号を追加
+            send_data += struct.pack('B', self.seq)
+            # チェックサムをデータに追加
+            send_data += struct.pack('B', checksum)
             self.ser.write(send_data)
             self.get_logger().info(f"Sent data: {msg.data}")
             self.get_logger().info(f"Sent packed data: {send_data.hex()}")
+
+            
 
 def main(args=None):
     rclpy.init(args=args)

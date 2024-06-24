@@ -20,7 +20,10 @@ class ControllerNode(Node):
             '3': [0, 0, 0]
         }
         self.current_position = [0.0, 0.0, 0.0]  # 初期位置 [x, y, theta]
-        self.max_speed = 1.0  # 最大速度 [m/s]
+        self.max_speed = 500.0  # 最大速度 [mm/s]
+        self.max_acceleration = 250.0  # 最大加速度 [mm/s^2]
+        self.last_speed = 0.0  # 前回の速度 [mm/s]
+        self.last_time = self.get_clock().now()  # 前回の時間
 
     def listener_callback(self, msg):
         data = msg.data.split(',')
@@ -54,13 +57,28 @@ class ControllerNode(Node):
         x, y, theta = target
         dx = x - self.current_position[0]
         dy = y - self.current_position[1]
-        distance = math.sqrt(dx**2 + dy**2) / 1000.0  # 距離をメートルに変換
+        distance = math.sqrt(dx**2 + dy**2)  # 距離をmmで計算
         direction = math.degrees(math.atan2(dy, dx)) % 360
 
         self.get_logger().info(f"Moving to target: {target} with direction {direction} and distance {distance}")
 
-        # 最大速度を設定
-        speed = min(self.max_speed, distance)
+        # 現在の時間を取得
+        current_time = self.get_clock().now()
+        time_delta = (current_time - self.last_time).nanoseconds / 1e9  # 秒に変換
+
+        # 速度を計算
+        desired_speed = min(self.max_speed, distance / time_delta)
+        acceleration = (desired_speed - self.last_speed) / time_delta
+
+        if acceleration > self.max_acceleration:
+            speed = self.last_speed + self.max_acceleration * time_delta
+        elif acceleration < -self.max_acceleration:
+            speed = self.last_speed - self.max_acceleration * time_delta
+        else:
+            speed = desired_speed
+
+        self.last_speed = speed
+        self.last_time = current_time
 
         self.send_velocity_command(speed, direction, theta, team_color, action_number)
 
