@@ -13,17 +13,27 @@ class ControllerNode(Node):
             10)
         self.publisher_ = self.create_publisher(Float32MultiArray, 'cmd_vel', 10)
 
+        # 自己位置を更新するためのサブスクリプション
+        self.position_subscription = self.create_subscription(
+            Float32MultiArray,
+            'estimated_position',
+            self.update_position_callback,
+            10)
+
         # 地点の座標を設定
         self.locations = {
-            '1': [1500, 1500, 0],  # [x, y, theta]
-            '2': [1500, 0, 0],
+            '1': [500, 500, 0],  # [x, y, theta]
+            '2': [0, 500, 0],
             '3': [0, 0, 0]
         }
         self.current_position = [0.0, 0.0, 0.0]  # 初期位置 [x, y, theta]
         self.max_speed = 500.0  # 最大速度 [mm/s]
-        self.max_acceleration = 250.0  # 最大加速度 [mm/s^2]
-        self.last_speed = 0.0  # 前回の速度 [mm/s]
-        self.last_time = self.get_clock().now()  # 前回の時間
+        self.max_accel = 50.0  # 最大加速度 [mm/s^2]
+        self.max_angular_speed = 30.0  # 最大角速度 [deg/s]
+
+    def update_position_callback(self, msg):
+        self.current_position = [msg.data[0], msg.data[1], msg.data[2]]
+        self.get_logger().info(f"Updated current position: {self.current_position}")
 
     def listener_callback(self, msg):
         data = msg.data.split(',')
@@ -54,37 +64,30 @@ class ControllerNode(Node):
                     break
 
     def move_to_target(self, target, team_color, action_number):
-        x, y, theta = target
+        x, y, target_theta = target
         dx = x - self.current_position[0]
         dy = y - self.current_position[1]
-        distance = math.sqrt(dx**2 + dy**2)  # 距離をmmで計算
-        direction = math.degrees(math.atan2(dy, dx)) % 360
+        distance = math.sqrt(dx**2 + dy**2)  # 距離をミリメートル単位で計算
+        direction = (math.degrees(math.atan2(dy, -dx)) - 90) % 360  # 方向を0-360度に設定
 
         self.get_logger().info(f"Moving to target: {target} with direction {direction} and distance {distance}")
 
-        # 現在の時間を取得
-        current_time = self.get_clock().now()
-        time_delta = (current_time - self.last_time).nanoseconds / 1e9  # 秒に変換
-
-        # 速度を計算
-        desired_speed = min(self.max_speed, distance / time_delta)
-        acceleration = (desired_speed - self.last_speed) / time_delta
-
-        if acceleration > self.max_acceleration:
-            speed = self.last_speed + self.max_acceleration * time_delta
-        elif acceleration < -self.max_acceleration:
-            speed = self.last_speed - self.max_acceleration * time_delta
+        if distance < 50:  # 例えば50mm以下になったら停止
+            speed = 0.0
         else:
-            speed = desired_speed
+            speed = min(self.max_speed, distance)
 
-        self.last_speed = speed
-        self.last_time = current_time
+        # 角速度を計算
+        dtheta = (target_theta - self.current_position[2] + 360) % 360
+        if dtheta > 180:
+            dtheta -= 360
+        angular_speed = max(min(dtheta, self.max_angular_speed), -self.max_angular_speed)
 
-        self.send_velocity_command(speed, direction, theta, team_color, action_number)
+        self.send_velocity_command(speed, direction, angular_speed, team_color, action_number)
 
-    def send_velocity_command(self, speed, direction, theta, team_color, action_number):
+    def send_velocity_command(self, speed, direction, angular_speed, team_color, action_number):
         msg = Float32MultiArray()
-        msg.data = [float(speed), float(direction), float(theta), float(team_color), float(action_number)]
+        msg.data = [float(speed), float(direction), float(angular_speed), float(team_color), float(action_number)]
         self.publisher_.publish(msg)
         self.get_logger().info(f"Sent velocity command: {msg.data}")
 

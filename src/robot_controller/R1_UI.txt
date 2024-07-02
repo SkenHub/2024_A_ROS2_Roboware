@@ -291,7 +291,7 @@
     </div>
 
     <script>
-        const ws = new WebSocket("ws://192.168.98.212:8000/ws");
+        const ws = new WebSocket("ws://192.168.98.212:8080/ws");
 
         let behavior = [0, 0, 0, 0, 0], behavior_count = [0, 0, 0, 0, 0],
             button = [0, 0, 0], button_count = [0, 0, 0],

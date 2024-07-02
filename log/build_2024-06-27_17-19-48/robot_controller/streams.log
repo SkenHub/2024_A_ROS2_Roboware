@@ -1,0 +1,28 @@
+[0.850s] Invoking command in '/home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/src/robot_controller': PYTHONPATH=/home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/build/robot_controller/prefix_override:/home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/install/robot_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/robot_controller build --build-base /home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/build/robot_controller/build install --record /home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/build/robot_controller/install.log --single-version-externally-managed install_data
+[1.153s] running egg_info
+[1.153s] writing ../../build/robot_controller/robot_controller.egg-info/PKG-INFO
+[1.154s] writing dependency_links to ../../build/robot_controller/robot_controller.egg-info/dependency_links.txt
+[1.154s] writing entry points to ../../build/robot_controller/robot_controller.egg-info/entry_points.txt
+[1.154s] writing requirements to ../../build/robot_controller/robot_controller.egg-info/requires.txt
+[1.154s] writing top-level names to ../../build/robot_controller/robot_controller.egg-info/top_level.txt
+[1.155s] reading manifest file '../../build/robot_controller/robot_controller.egg-info/SOURCES.txt'
+[1.156s] writing manifest file '../../build/robot_controller/robot_controller.egg-info/SOURCES.txt'
+[1.156s] running build
+[1.156s] running build_py
+[1.156s] copying robot_controller/controller_node.py -> /home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/build/robot_controller/build/lib/robot_controller
+[1.157s] running install
+[1.157s] running install_lib
+[1.158s] copying /home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/build/robot_controller/build/lib/robot_controller/controller_node.py -> /home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/install/robot_controller/lib/python3.10/site-packages/robot_controller
+[1.158s] byte-compiling /home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/install/robot_controller/lib/python3.10/site-packages/robot_controller/controller_node.py to controller_node.cpython-310.pyc
+[1.159s] running install_data
+[1.159s] running install_egg_info
+[1.161s] removing '/home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/install/robot_controller/lib/python3.10/site-packages/robot_controller-0.0.0-py3.10.egg-info' (and everything under it)
+[1.161s] Copying ../../build/robot_controller/robot_controller.egg-info to /home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/install/robot_controller/lib/python3.10/site-packages/robot_controller-0.0.0-py3.10.egg-info
+[1.162s] running install_scripts
+[1.178s] Installing cmd_vel_to_serial_node script to /home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/install/robot_controller/lib/robot_controller
+[1.178s] Installing controller_node script to /home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/install/robot_controller/lib/robot_controller
+[1.178s] Installing realsense_position_node script to /home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/install/robot_controller/lib/robot_controller
+[1.178s] Installing serial_to_position_node script to /home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/install/robot_controller/lib/robot_controller
+[1.178s] Installing web_socket_node script to /home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/install/robot_controller/lib/robot_controller
+[1.178s] writing list of installed files to '/home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/build/robot_controller/install.log'
+[1.245s] Invoked command in '/home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/src/robot_controller' returned '0': PYTHONPATH=/home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/build/robot_controller/prefix_override:/home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/install/robot_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/robot_controller build --build-base /home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/build/robot_controller/build install --record /home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/build/robot_controller/install.log --single-version-externally-managed install_data

@@ -11,7 +11,7 @@ from socket import SO_REUSEADDR, SOL_SOCKET, socket
 
 # ipアドレス、ポートの指定
 ipadress_ = '192.168.98.212'
-port_ = 8000
+port_ = 8080
 
 # HTMLファイルのパスを指定
 path = '/home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/src/robot_controller/R1_UI.txt'
