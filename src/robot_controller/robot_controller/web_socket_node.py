@@ -10,11 +10,13 @@ import os
 from socket import SO_REUSEADDR, SOL_SOCKET, socket
 
 # ipアドレス、ポートの指定
-ipadress_ = '192.168.98.212'
-port_ = 8080
+ipadress_ = '192.168.98.216'
+port_ = 8010
+#192.168.98.216 ノート
+#192.168.98.212　ミニ
 
 # HTMLファイルのパスを指定
-path = '/home/altair/ros2_robocon_ws/2024_A_ROS2_Roboware/src/robot_controller/R1_UI.txt'
+path = '/home/altair/2024_A_ROS2_Roboware/src/robot_controller/R1_UI.txt'
 
 # FastAPIのインスタンスを作成
 app = FastAPI()

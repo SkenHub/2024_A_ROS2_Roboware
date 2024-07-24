@@ -1,0 +1,25 @@
+[1.126s] Invoking command in '/home/altair/2024_A_ROS2_Roboware/src/robot_controller': PYTHONPATH=/home/altair/2024_A_ROS2_Roboware/build/robot_controller/prefix_override:/home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/robot_controller build --build-base /home/altair/2024_A_ROS2_Roboware/build/robot_controller/build install --record /home/altair/2024_A_ROS2_Roboware/build/robot_controller/install.log --single-version-externally-managed install_data
+[1.443s] running egg_info
+[1.468s] writing ../../build/robot_controller/robot_controller.egg-info/PKG-INFO
+[1.468s] writing dependency_links to ../../build/robot_controller/robot_controller.egg-info/dependency_links.txt
+[1.469s] writing entry points to ../../build/robot_controller/robot_controller.egg-info/entry_points.txt
+[1.469s] writing requirements to ../../build/robot_controller/robot_controller.egg-info/requires.txt
+[1.469s] writing top-level names to ../../build/robot_controller/robot_controller.egg-info/top_level.txt
+[1.522s] reading manifest file '../../build/robot_controller/robot_controller.egg-info/SOURCES.txt'
+[1.524s] writing manifest file '../../build/robot_controller/robot_controller.egg-info/SOURCES.txt'
+[1.524s] running build
+[1.524s] running build_py
+[1.525s] running install
+[1.531s] running install_lib
+[1.558s] running install_data
+[1.558s] running install_egg_info
+[1.587s] removing '/home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/python3.10/site-packages/robot_controller-0.0.0-py3.10.egg-info' (and everything under it)
+[1.588s] Copying ../../build/robot_controller/robot_controller.egg-info to /home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/python3.10/site-packages/robot_controller-0.0.0-py3.10.egg-info
+[1.589s] running install_scripts
+[1.826s] Installing cmd_vel_to_serial_node script to /home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/robot_controller
+[1.827s] Installing controller_node script to /home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/robot_controller
+[1.827s] Installing realsense_position_node script to /home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/robot_controller
+[1.827s] Installing serial_to_position_node script to /home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/robot_controller
+[1.827s] Installing web_socket_node script to /home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/robot_controller
+[1.828s] writing list of installed files to '/home/altair/2024_A_ROS2_Roboware/build/robot_controller/install.log'
+[1.858s] Invoked command in '/home/altair/2024_A_ROS2_Roboware/src/robot_controller' returned '0': PYTHONPATH=/home/altair/2024_A_ROS2_Roboware/build/robot_controller/prefix_override:/home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/robot_controller build --build-base /home/altair/2024_A_ROS2_Roboware/build/robot_controller/build install --record /home/altair/2024_A_ROS2_Roboware/build/robot_controller/install.log --single-version-externally-managed install_data

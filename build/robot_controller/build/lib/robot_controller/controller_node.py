@@ -22,12 +22,12 @@ class ControllerNode(Node):
 
         # 地点の座標を設定
         self.locations = {
-            '1': [500, 500, 0],  # [x, y, theta]
-            '2': [0, 500, 0],
+            '1': [1500, 1500, 0],  # [x, y, theta]
+            '2': [0, 1500, 0],
             '3': [0, 0, 0]
         }
         self.current_position = [0.0, 0.0, 0.0]  # 初期位置 [x, y, theta]
-        self.max_speed = 500.0  # 最大速度 [mm/s]
+        self.max_speed = 100.0  # 最大速度 [mm/s]
         self.max_accel = 50.0  # 最大加速度 [mm/s^2]
         self.max_angular_speed = 30.0  # 最大角速度 [deg/s]
 
@@ -72,7 +72,7 @@ class ControllerNode(Node):
 
         self.get_logger().info(f"Moving to target: {target} with direction {direction} and distance {distance}")
 
-        if distance < 50:  # 例えば50mm以下になったら停止
+        if distance < 10:  # 10mm以下になったら停止
             speed = 0.0
         else:
             speed = min(self.max_speed, distance)

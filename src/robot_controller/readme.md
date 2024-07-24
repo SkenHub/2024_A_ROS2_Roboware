@@ -147,5 +147,9 @@ port_ = ポート
 2. `web_socket_node` が起動したら、Webブラウザを開き、`http://192.168.98.212:8000` にアクセスしてUIを確認します。
 
 
+# メモ
+みにPC start_all_node 192.168.98.212
+ノートPC start_all_node2 192.168.98.216
+
 ## ライセンス
 Apache License 2.0
