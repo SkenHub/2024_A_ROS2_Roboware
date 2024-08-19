@@ -157,7 +157,7 @@
             border-color: rgb(114, 110, 110);
             background-color: rgb(114, 110, 110);
             z-index: 1;
-            transform: rotate(100deg);
+            transform: rotate(0deg);
             transform-origin: center center;
         }
 
@@ -231,7 +231,7 @@
             left: 144px;
         }
 
-        .timer-button{
+        .timer-button {
             position: absolute;
             background-color: rgb(20, 203, 173);
             width: 190px;
@@ -243,7 +243,6 @@
             line-height: 1.4;
             font-size: 27px;
         }
-
     </style>
 </head>
 
@@ -275,8 +274,8 @@
     <!-- デバック表示エリア-->
     <div id="position_debug">
         <div class="position">自己位置</div>
-        <div class="position-x" id="position_x">X: xxxx.x</div>
-        <div class="position-y" id="position_y">Y: xxxx.x</div>
+        <div class="position-x" id="position_x">X: xxxx</div>
+        <div class="position-y" id="position_y">Y: xxxx</div>
     </div>
 
     <!-- マップエリア -->
@@ -376,11 +375,11 @@
             position_debug.style.display = "none";
             map.style.display = "none";
 
-            button_1.style.backgroundColor="rgb(114, 110, 110,0)"
+            button_1.style.backgroundColor = "rgb(114, 110, 110,0)"
             button[0] = 0;
-            button_2.style.backgroundColor="rgb(114, 110, 110,0)"
+            button_2.style.backgroundColor = "rgb(114, 110, 110,0)"
             button[1] = 0;
-            button_3.style.backgroundColor="rgb(114, 110, 110,0)"
+            button_3.style.backgroundColor = "rgb(114, 110, 110,0)"
             button[2] = 0;
         }
 
@@ -393,7 +392,7 @@
             timer.style.display = "block";
             position_debug.style.display = "block";
             map.style.display = "block";
-            
+
             background.style.borderColor = "rgb(0,0,255)";
             start_zone.style.backgroundColor = "rgb(0,0,255)";
             start_zone.style.right = "350px";
@@ -409,7 +408,7 @@
             color = 0;
         }
 
-        
+
         //赤チーム
         function Red() {
             button_color.style.display = "none";
@@ -434,7 +433,7 @@
 
             color = 1;
         }
-        
+
         //規定動作実行 4動作
         function Behavior_1() {
             behavior_count[0] = behavior_count[0] + 1;
@@ -503,25 +502,25 @@
 
         //移動座標
         function Button_1() {
-            button_1.style.backgroundColor="rgb(114, 110, 110,1)";
-            button_2.style.backgroundColor="rgb(114, 110, 110,0)";
-            button_3.style.backgroundColor="rgb(114, 110, 110,0)";
+            button_1.style.backgroundColor = "rgb(114, 110, 110,1)";
+            button_2.style.backgroundColor = "rgb(114, 110, 110,0)";
+            button_3.style.backgroundColor = "rgb(114, 110, 110,0)";
             button[0] = 1;
             button[1] = 0;
             button[2] = 0;
         }
         function Button_2() {
-            button_1.style.backgroundColor="rgb(114, 110, 110,0)";
-            button_2.style.backgroundColor="rgb(114, 110, 110,1)";
-            button_3.style.backgroundColor="rgb(114, 110, 110,0)";
+            button_1.style.backgroundColor = "rgb(114, 110, 110,0)";
+            button_2.style.backgroundColor = "rgb(114, 110, 110,1)";
+            button_3.style.backgroundColor = "rgb(114, 110, 110,0)";
             button[0] = 0;
             button[1] = 1;
             button[2] = 0;
         }
         function Button_3() {
-            button_1.style.backgroundColor="rgb(114, 110, 110,0)";
-            button_2.style.backgroundColor="rgb(114, 110, 110,0)";
-            button_3.style.backgroundColor="rgb(114, 110, 110,1)";
+            button_1.style.backgroundColor = "rgb(114, 110, 110,0)";
+            button_2.style.backgroundColor = "rgb(114, 110, 110,0)";
+            button_3.style.backgroundColor = "rgb(114, 110, 110,1)";
             button[0] = 0;
             button[1] = 0;
             button[2] = 1;
@@ -572,23 +571,23 @@
         setInterval(() => {
             Send_Data = `${behavior[0]},${behavior[1]},${behavior[2]},${behavior[3]},${behavior[4]},${button[0]},${button[1]},${button[2]},${color},${STOP}`;
             ws.send(Send_Data);
-        }, 0); 
-        
-        ws.onmessage = function(event) {
+        }, 0);
+
+        ws.onmessage = function (event) {
             var receiveData = event.data;
             var dataArray = receiveData.split(",");
             position_x = parseInt(dataArray[0]);
-            position_y = parseInt(dataArray[0]);
-            position_direction = parseInt(dataArray[0]);
-            if (color == 0) {
-                robot.style.right = (-positionx * 0.1 + 16.5) + "px";
-            } else if (color == 1) {
-                robot.style.right = (-positionx * 0.1 + 366.5) + "px";
+            position_y = parseInt(dataArray[1]);
+            position_direction = parseInt(dataArray[2]);
+            if (color == 1) {
+                robot.style.right = (position_x * 0.1 + 16.5) + "px";
+            } else if (color == 0) {
+                robot.style.right = (-position_x * 0.1 + 366.5) + "px";
             }
             robot.style.bottom = (position_y * 0.1 + 16.55) + "px";
-            robot.style.transform = "rotate(" + position_derection + "deg)";
-            position_X.innerHTML = position_x;
-            position_Y.innerHTML = position_y;
+            robot.style.transform = "rotate(" + position_direction + "deg)";
+            position_X.innerHTML = "X: " + position_x;
+            position_Y.innerHTML = "Y: " + position_y;
         }
 
 
