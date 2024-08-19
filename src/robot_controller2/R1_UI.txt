@@ -296,7 +296,8 @@
             button = [0, 0, 0], button_count = [0, 0, 0],
             color = 0, STOP = 0, stop_count = 0,
             minutes = 0, seconds = 0, millis = 0, interval = 0, count = 0,
-            position_x = 0, position_y = 0, position_direction;
+            position_x = 0, position_y = 0, position_direction,
+            rx, ry, lx, ly;
 
         let Send_Data = "", Receive_Data = "";
 
@@ -567,9 +568,24 @@
             minute.innerHTML = minutes.toString().padStart(2, "0") + ":";
         }
 
+        function updateGamepadValues() {
+            var gamepads = navigator.getGamepads ? navigator.getGamepads() : (navigator.webkitGetGamepads ? navigator.webkitGetGamepads : []);
+            var gamepad = gamepads[0]; // 0番目のゲームパッドを取得
+
+            if (gamepad) {
+                // ジョイスティックの値を取得
+                lx = gamepad.axes[0] * 100 + 100;
+                ly = gamepad.axes[1] * -100 + 100;
+                rx = gamepad.axes[2] * 100 + 100;
+                ry = gamepad.axes[3] * -100 + 100;
+            }
+        }
+
+        setInterval(updateGamepadValues, 0);
+
         //通信
         setInterval(() => {
-            Send_Data = `${behavior[0]},${behavior[1]},${behavior[2]},${behavior[3]},${behavior[4]},${button[0]},${button[1]},${button[2]},${color},${STOP}`;
+            Send_Data = `${behavior[0]},${behavior[1]},${behavior[2]},${behavior[3]},${behavior[4]},${button[0]},${button[1]},${button[2]},${color},${STOP},${lx.toFixed(0)},${ly.toFixed(0)},${rx.toFixed(0)},${ry.toFixed(0)}`;
             ws.send(Send_Data);
         }, 0);
 
