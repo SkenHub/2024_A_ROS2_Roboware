@@ -14,6 +14,51 @@
             font-family: "Anta";
         }
 
+        .button_UP {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 10px;
+            right: 10px;
+            background:
+                linear-gradient(90deg, transparent 40%, rgb(255, 255, 255) 40%, rgb(255, 255, 255) 60%, transparent 60%),
+                linear-gradient(0deg, transparent 40%, rgb(255, 255, 255) 40%, rgb(255, 255, 255) 60%, transparent 60%);
+        }
+
+        .button_Down {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 230px;
+            right: 10px;
+            background:
+                linear-gradient(0deg, transparent 40%, rgb(255, 255, 255) 40%, rgb(255, 255, 255) 60%, transparent 60%);
+        }
+
+        .behavior_list {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 120px;
+            right: 10px;
+            line-height: 1.25;
+            font-weight: 900;
+            font-size: 80px;
+            background-color: rgb(20, 203, 173);
+        }
+
+        .robot_mode {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 330px;
+            right: 10px;
+            line-height: 1.25;
+            font-weight: 900;
+            font-size: 30px;
+            background-color: rgb(20, 203, 173);
+        }
+
         .button-behavior {
             position: absolute;
             width: 100px;
@@ -26,11 +71,27 @@
             border-color: rgb(0, 0, 0);
         }
 
+        .behavior-0,
         .behavior-1,
         .behavior-2,
         .behavior-3,
         .behavior-4,
-        .behavior-5 {
+        .behavior-5,
+        .behavior-6,
+        .behavior-7,
+        .behavior-8,
+        .behavior-9,
+        .behavior-10,
+        .behavior-11,
+        .behavior-12,
+        .behavior-13,
+        .behavior-14,
+        .behavior-15,
+        .behavior-16,
+        .behavior-17,
+        .behavior-18,
+        .behavior-19,
+        .behavior-20 {
             background-color: rgb(20, 203, 173);
             border-style: solid;
         }
@@ -249,12 +310,34 @@
 <body id="all">
     <!-- ボタンエリア -->
     <div class="button-behavior" id="button-behavior">
+        <div class="behavior-0" id="behavior_0">動作0</div>
         <div class="behavior-1" id="behavior_1">動作1</div>
         <div class="behavior-2" id="behavior_2">動作2</div>
         <div class="behavior-3" id="behavior_3">動作3</div>
         <div class="behavior-4" id="behavior_4">動作4</div>
         <div class="behavior-5" id="behavior_5">動作5</div>
+        <div class="behavior-6" id="behavior_6">動作6</div>
+        <div class="behavior-7" id="behavior_7">動作7</div>
+        <div class="behavior-8" id="behavior_8">動作8</div>
+        <div class="behavior-9" id="behavior_9">動作9</div>
+        <div class="behavior-10" id="behavior_10">動作10</div>
+        <div class="behavior-11" id="behavior_11">動作11</div>
+        <div class="behavior-12" id="behavior_12">動作12</div>
+        <div class="behavior-13" id="behavior_13">動作13</div>
+        <div class="behavior-14" id="behavior_14">動作14</div>
+        <div class="behavior-15" id="behavior_15">動作15</div>
+        <div class="behavior-16" id="behavior_16">動作16</div>
+        <div class="behavior-17" id="behavior_17">動作17</div>
+        <div class="behavior-18" id="behavior_18">動作18</div>
+        <div class="behavior-19" id="behavior_19">動作19</div>
+        <div class="behavior-20" id="behavior_20">動作20</div>
     </div>
+    <div id="button_UD">
+        <div class="button_UP" id="button_UP"></div>
+        <div class="button_Down" id="button_Down"></div>
+        <div class="behavior_list" id="behavior_list">0</div>
+    </div>
+    <div class="robot_mode" id="robot_mode">自動</div>
     <div class="stop" id="stop">STOP</div>
     <div class="button_color" id="button_color">
         <div class="blue" id="blue">青チーム</div>
