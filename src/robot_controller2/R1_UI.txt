@@ -16,8 +16,8 @@
 
         .button_UP {
             position: absolute;
-            width: 100px;
-            height: 100px;
+            width: 70px;
+            height: 70px;
             top: 10px;
             right: 10px;
             background:
@@ -27,9 +27,9 @@
 
         .button_Down {
             position: absolute;
-            width: 100px;
-            height: 100px;
-            top: 230px;
+            width: 70px;
+            height: 70px;
+            top: 160px;
             right: 10px;
             background:
                 linear-gradient(0deg, transparent 40%, rgb(255, 255, 255) 40%, rgb(255, 255, 255) 60%, transparent 60%);
@@ -37,23 +37,23 @@
 
         .behavior_list {
             position: absolute;
-            width: 100px;
-            height: 100px;
-            top: 120px;
-            right: 10px;
+            width: 80px;
+            height: 80px;
+            top: 90px;
+            right: 5px;
             line-height: 1.25;
             font-weight: 900;
-            font-size: 80px;
+            font-size: 60px;
             background-color: rgb(20, 203, 173);
         }
 
         .robot_mode {
             position: absolute;
             width: 100px;
-            height: 100px;
-            top: 330px;
+            height: 70px;
+            top: 250px;
             right: 10px;
-            line-height: 3;
+            line-height: 2.3;
             font-weight: 900;
             font-size: 30px;
             background-color: rgb(20, 203, 173);
@@ -65,7 +65,7 @@
             height: 30px;
             top: 10px;
             right: 320px;
-            line-height: 2;
+            line-height: 1.5;
             font-weight: 900;
             font-size: 30px;
         }
@@ -76,7 +76,7 @@
             height: 30px;
             top: 10px;
             right: 220px;
-            line-height: 2;
+            line-height: 1.5;
             font-weight: 900;
             font-size: 30px;
         }
@@ -87,7 +87,7 @@
             height: 30px;
             top: 10px;
             right: 120px;
-            line-height: 2;
+            line-height: 1.5;
             font-weight: 900;
             font-size: 30px;
         }
