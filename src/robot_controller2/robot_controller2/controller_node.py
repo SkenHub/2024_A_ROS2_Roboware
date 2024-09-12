@@ -16,18 +16,18 @@ class ControllerNode(Node):
         # 自己位置を更新するためのサブスクリプション
         self.position_subscription = self.create_subscription(
             Float32MultiArray,
-            'estimated_position',
+            'robot_position',
             self.update_position_callback,
             10)
 
         # 地点の座標を設定
         self.locations = {
-            '1': [1500, 1500, 0],  # [x, y, theta]
-            '2': [0, 1500, 0],
+            '1': [500, 500, 0],  # [x, y, theta]
+            '2': [0, 500, 0],
             '3': [0, 0, 0]
         }
         self.current_position = [0.0, 0.0, 0.0]  # 初期位置 [x, y, theta]
-        self.max_speed = 100.0  # 最大速度 [mm/s]
+        self.max_speed = 500.0  # 最大速度 [mm/s]
         self.max_accel = 50.0  # 最大加速度 [mm/s^2]
         self.max_angular_speed = 30.0  # 最大角速度 [deg/s]
 
@@ -52,7 +52,7 @@ class ControllerNode(Node):
         # 指定された動作番号に基づいて動作を行う
         for i, action in enumerate(actions):
             if action == 1:
-                self.move_to_target(self.current_position, float(team_color), float(i + 1))  # 現在の位置から動作番号を送信
+                self.move_to_target(self.current_position, float(team_color), float(i + 1))
                 return
 
         # 指定された位置に移動する
@@ -60,7 +60,7 @@ class ControllerNode(Node):
             for i, pos in enumerate(positions):
                 if pos == 1:
                     target = self.locations[str(i + 1)]
-                    self.move_to_target(target, float(team_color), float(0))  # action_number is 0 when moving to positions
+                    self.move_to_target(target, float(team_color), float(0))
                     break
 
     def move_to_target(self, target, team_color, action_number):
@@ -72,7 +72,7 @@ class ControllerNode(Node):
 
         self.get_logger().info(f"Moving to target: {target} with direction {direction} and distance {distance}")
 
-        if distance < 10:  # 10mm以下になったら停止
+        if distance < 50:  # 例えば50mm以下になったら停止
             speed = 0.0
         else:
             speed = min(self.max_speed, distance)
@@ -87,7 +87,7 @@ class ControllerNode(Node):
 
     def send_velocity_command(self, speed, direction, angular_speed, team_color, action_number):
         msg = Float32MultiArray()
-        msg.data = [float(speed), float(direction), float(angular_speed), float(team_color), float(action_number)]
+        msg.data = [float(action_number), float(team_color), float(speed), float(direction), float(angular_speed)]
         self.publisher_.publish(msg)
         self.get_logger().info(f"Sent velocity command: {msg.data}")
 

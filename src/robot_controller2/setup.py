@@ -22,8 +22,8 @@ setup(
         'console_scripts': [
             'web_socket_node = robot_controller2.web_socket_node:main',
             'controller_node = robot_controller2.controller_node:main',
-            'cmd_vel_to_serial_node = robot_controller2.cmd_vel_to_serial_node:main',
-            'serial_to_position_node = robot_controller2.serial_to_position_node:main',
+            'serial_send_node = robot_controller2.serial_send_node:main',
+            'serial_read_node = robot_controller2.serial_read_node:main',
             'realsense_position_node = robot_controller2.realsense_position_node:main',
         ],
     },
