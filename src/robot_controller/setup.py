@@ -25,6 +25,7 @@ setup(
         'serial_send_node = robot_controller.serial_send_node:main',
         'serial_read_node = robot_controller.serial_read_node:main',
         'position_node = robot_controller.position_node:main',
+        'robot_position_to_rviz_node = robot_controller.robot_position_to_rviz_node:main',
     ],
     },
 )

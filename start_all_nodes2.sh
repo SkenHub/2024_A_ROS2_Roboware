@@ -18,3 +18,6 @@ gnome-terminal --tab --title="serial_read_node" -- bash -c "source /opt/ros/humb
 
 # Start realsense_position_node in a new tab
 gnome-terminal --tab --title="position_node" -- bash -c "source /opt/ros/humble/setup.bash; source ~/2024_A_ROS2_Roboware/install/setup.bash; ros2 run robot_controller position_node; exec bash"
+
+# Start realsense_position_node in a new tab
+gnome-terminal --tab --title="robot_position_to_rviz_node" -- bash -c "source /opt/ros/humble/setup.bash; source ~/2024_A_ROS2_Roboware/install/setup.bash; ros2 run robot_controller robot_position_to_rviz_node; exec bash"
