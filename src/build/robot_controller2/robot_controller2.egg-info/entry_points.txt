@@ -1,0 +1,6 @@
+[console_scripts]
+controller_node = robot_controller2.controller_node:main
+realsense_position_node = robot_controller2.realsense_position_node:main
+serial_read_node = robot_controller2.serial_read_node:main
+serial_send_node = robot_controller2.serial_send_node:main
+web_socket_node = robot_controller2.web_socket_node:main

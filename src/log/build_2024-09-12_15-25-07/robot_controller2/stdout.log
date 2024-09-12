@@ -1,0 +1,40 @@
+running egg_info
+creating ../build/robot_controller2/robot_controller2.egg-info
+writing ../build/robot_controller2/robot_controller2.egg-info/PKG-INFO
+writing dependency_links to ../build/robot_controller2/robot_controller2.egg-info/dependency_links.txt
+writing entry points to ../build/robot_controller2/robot_controller2.egg-info/entry_points.txt
+writing requirements to ../build/robot_controller2/robot_controller2.egg-info/requires.txt
+writing top-level names to ../build/robot_controller2/robot_controller2.egg-info/top_level.txt
+writing manifest file '../build/robot_controller2/robot_controller2.egg-info/SOURCES.txt'
+reading manifest file '../build/robot_controller2/robot_controller2.egg-info/SOURCES.txt'
+writing manifest file '../build/robot_controller2/robot_controller2.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller2/build
+creating /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller2/build/lib
+creating /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller2/build/lib/robot_controller2
+copying robot_controller2/serial_read_node.py -> /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller2/build/lib/robot_controller2
+copying robot_controller2/web_socket_node.py -> /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller2/build/lib/robot_controller2
+copying robot_controller2/__init__.py -> /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller2/build/lib/robot_controller2
+copying robot_controller2/realsense_position_node.py -> /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller2/build/lib/robot_controller2
+copying robot_controller2/controller_node.py -> /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller2/build/lib/robot_controller2
+copying robot_controller2/serial_send_node.py -> /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller2/build/lib/robot_controller2
+running install
+running install_lib
+creating /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller2/lib/python3.10/site-packages/robot_controller2
+copying /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller2/build/lib/robot_controller2/serial_read_node.py -> /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller2/lib/python3.10/site-packages/robot_controller2
+copying /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller2/build/lib/robot_controller2/web_socket_node.py -> /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller2/lib/python3.10/site-packages/robot_controller2
+copying /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller2/build/lib/robot_controller2/__init__.py -> /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller2/lib/python3.10/site-packages/robot_controller2
+copying /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller2/build/lib/robot_controller2/realsense_position_node.py -> /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller2/lib/python3.10/site-packages/robot_controller2
+copying /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller2/build/lib/robot_controller2/controller_node.py -> /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller2/lib/python3.10/site-packages/robot_controller2
+copying /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller2/build/lib/robot_controller2/serial_send_node.py -> /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller2/lib/python3.10/site-packages/robot_controller2
+byte-compiling /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller2/lib/python3.10/site-packages/robot_controller2/serial_read_node.py to serial_read_node.cpython-310.pyc
+byte-compiling /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller2/lib/python3.10/site-packages/robot_controller2/web_socket_node.py to web_socket_node.cpython-310.pyc
+byte-compiling /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller2/lib/python3.10/site-packages/robot_controller2/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller2/lib/python3.10/site-packages/robot_controller2/realsense_position_node.py to realsense_position_node.cpython-310.pyc
+byte-compiling /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller2/lib/python3.10/site-packages/robot_controller2/controller_node.py to controller_node.cpython-310.pyc
+byte-compiling /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller2/lib/python3.10/site-packages/robot_controller2/serial_send_node.py to serial_send_node.cpython-310.pyc
+running install_data
+creating /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller2/share/ament_index
+creating /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller2/share/ament_index/resource_index
+creating /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller2/share/ament_index/resource_index/packages

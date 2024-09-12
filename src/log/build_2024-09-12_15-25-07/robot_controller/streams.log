@@ -1,0 +1,52 @@
+[1.863s] Invoking command in '/home/altair/2024_A_ROS2_Roboware/src/robot_controller': PYTHONPATH=/home/altair/2024_A_ROS2_Roboware/src/build/robot_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../build/robot_controller build --build-base /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller/build install --record /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller/install.log --single-version-externally-managed install_data
+[2.194s] running egg_info
+[2.195s] creating ../build/robot_controller/robot_controller.egg-info
+[2.220s] writing ../build/robot_controller/robot_controller.egg-info/PKG-INFO
+[2.221s] writing dependency_links to ../build/robot_controller/robot_controller.egg-info/dependency_links.txt
+[2.221s] writing entry points to ../build/robot_controller/robot_controller.egg-info/entry_points.txt
+[2.221s] writing requirements to ../build/robot_controller/robot_controller.egg-info/requires.txt
+[2.221s] writing top-level names to ../build/robot_controller/robot_controller.egg-info/top_level.txt
+[2.222s] writing manifest file '../build/robot_controller/robot_controller.egg-info/SOURCES.txt'
+[2.276s] reading manifest file '../build/robot_controller/robot_controller.egg-info/SOURCES.txt'
+[2.277s] writing manifest file '../build/robot_controller/robot_controller.egg-info/SOURCES.txt'
+[2.277s] running build
+[2.277s] running build_py
+[2.278s] creating /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller/build
+[2.278s] creating /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller/build/lib
+[2.278s] creating /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller/build/lib/robot_controller
+[2.278s] copying robot_controller/web_socket_node.py -> /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller/build/lib/robot_controller
+[2.278s] copying robot_controller/__init__.py -> /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller/build/lib/robot_controller
+[2.278s] copying robot_controller/cmd_vel_to_serial_node.py -> /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller/build/lib/robot_controller
+[2.279s] copying robot_controller/realsense_position_node.py -> /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller/build/lib/robot_controller
+[2.279s] copying robot_controller/controller_node.py -> /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller/build/lib/robot_controller
+[2.279s] copying robot_controller/serial_to_position_node.py -> /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller/build/lib/robot_controller
+[2.280s] running install
+[2.290s] running install_lib
+[2.317s] creating /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/lib/python3.10/site-packages/robot_controller
+[2.317s] copying /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller/build/lib/robot_controller/web_socket_node.py -> /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/lib/python3.10/site-packages/robot_controller
+[2.317s] copying /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller/build/lib/robot_controller/__init__.py -> /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/lib/python3.10/site-packages/robot_controller
+[2.317s] copying /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller/build/lib/robot_controller/cmd_vel_to_serial_node.py -> /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/lib/python3.10/site-packages/robot_controller
+[2.317s] copying /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller/build/lib/robot_controller/realsense_position_node.py -> /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/lib/python3.10/site-packages/robot_controller
+[2.318s] copying /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller/build/lib/robot_controller/controller_node.py -> /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/lib/python3.10/site-packages/robot_controller
+[2.318s] copying /home/altair/2024_A_ROS2_Roboware/src/build/robot_controller/build/lib/robot_controller/serial_to_position_node.py -> /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/lib/python3.10/site-packages/robot_controller
+[2.318s] byte-compiling /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/lib/python3.10/site-packages/robot_controller/web_socket_node.py to web_socket_node.cpython-310.pyc
+[2.319s] byte-compiling /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/lib/python3.10/site-packages/robot_controller/__init__.py to __init__.cpython-310.pyc
+[2.320s] byte-compiling /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/lib/python3.10/site-packages/robot_controller/cmd_vel_to_serial_node.py to cmd_vel_to_serial_node.cpython-310.pyc
+[2.320s] byte-compiling /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/lib/python3.10/site-packages/robot_controller/realsense_position_node.py to realsense_position_node.cpython-310.pyc
+[2.321s] byte-compiling /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/lib/python3.10/site-packages/robot_controller/controller_node.py to controller_node.cpython-310.pyc
+[2.322s] byte-compiling /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/lib/python3.10/site-packages/robot_controller/serial_to_position_node.py to serial_to_position_node.cpython-310.pyc
+[2.323s] running install_data
+[2.323s] creating /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/share/ament_index
+[2.324s] creating /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/share/ament_index/resource_index
+[2.324s] creating /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/share/ament_index/resource_index/packages
+[2.324s] copying resource/robot_controller -> /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/share/ament_index/resource_index/packages
+[2.324s] copying package.xml -> /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/share/robot_controller
+[2.324s] running install_egg_info
+[2.355s] Copying ../build/robot_controller/robot_controller.egg-info to /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/lib/python3.10/site-packages/robot_controller-0.0.0-py3.10.egg-info
+[2.356s] running install_scripts
+[2.606s] Installing cmd_vel_to_serial_node script to /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/lib/robot_controller
+[2.606s] Installing controller_node script to /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/lib/robot_controller
+[2.606s] Installing realsense_position_node script to /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/lib/robot_controller
+[2.606s] Installing serial_to_position_node script to /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/lib/robot_controller
+[2.606s] Installing web_socket_node script to /home/altair/2024_A_ROS2_Roboware/src/install/robot_controller/lib/robot_controller
+[2.607s] writing list of installed files to '/home/altair/2024_A_ROS2_Roboware/src/build/robot_controller/install.log'

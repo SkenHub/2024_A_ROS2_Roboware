@@ -4,7 +4,7 @@ package_name = 'robot_controller'
 
 setup(
     name=package_name,
-    version='0.0.0',
+    version='2.0.0',
     packages=find_packages(exclude=['test']),
     data_files=[
         ('share/ament_index/resource_index/packages',
@@ -19,12 +19,12 @@ setup(
     license='Apache License 2.0',
     tests_require=['pytest'],
     entry_points={
-        'console_scripts': [
-            'web_socket_node = robot_controller.web_socket_node:main',
-            'controller_node = robot_controller.controller_node:main',
-            'cmd_vel_to_serial_node = robot_controller.cmd_vel_to_serial_node:main',
-            'serial_to_position_node = robot_controller.serial_to_position_node:main',
-            'realsense_position_node = robot_controller.realsense_position_node:main',
-        ],
+    'console_scripts': [
+        'web_socket_node = robot_controller.web_socket_node:main',
+        'controller_node = robot_controller.controller_node:main',
+        'serial_send_node = robot_controller.serial_send_node:main',
+        'serial_read_node = robot_controller.serial_read_node:main',
+        'position_node = robot_controller.position_node:main',
+    ],
     },
 )

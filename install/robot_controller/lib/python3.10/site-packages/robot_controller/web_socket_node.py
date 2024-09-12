@@ -10,9 +10,9 @@ import os
 from socket import SO_REUSEADDR, SOL_SOCKET, socket
 
 # ipアドレス、ポートの指定
-ipadress_ = '192.168.98.216'
-port_ = 8010
-#192.168.98.216 ノート
+ipadress_ = '192.168.90.216'
+port_ = 8080
+#192.168.90.216 ノート
 #192.168.98.212　ミニ
 
 # HTMLファイルのパスを指定
