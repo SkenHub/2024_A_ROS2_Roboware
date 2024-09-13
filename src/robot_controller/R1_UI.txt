@@ -399,7 +399,7 @@
     </div>
 
     <script>
-        const ws = new WebSocket("ws://192.168.90.216:8080/ws");
+        const ws = new WebSocket("ws://192.168.90.216:8010/ws");
 
         let behavior = 0,
             list_count = 0,

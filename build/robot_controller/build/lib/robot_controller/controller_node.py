@@ -57,10 +57,11 @@ class ControllerNode(Node):
 
         # 手動操作モードの場合
         if mode == 1:
-            Vx = (rx-105)*2
-            Vy = (ry-107)*2
+            Vx = (rx-105)*5
+            Vy = (ry-107)*5
             omega = (lx-102)
             self.send_velocity_command(Vx, Vy, omega, mode, behavior)
+            self.get_logger().info(f"Vx={Vx}, Vy={Vy}, Omega={omega} ")
         else:
             # ボタン設定に基づいてターゲットを決定
             if any(buttons):
