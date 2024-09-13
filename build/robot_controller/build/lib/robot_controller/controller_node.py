@@ -13,19 +13,16 @@ class ControllerNode(Node):
             10)
         self.publisher_ = self.create_publisher(Float32MultiArray, 'cmd_vel', 10)
         self.position_subscription = self.create_subscription(
-            Float32MultiArray,
-            'estimated_position',
-            self.update_position_callback,
-            10)
+            Float32MultiArray,'estimated_position',self.update_position_callback, 10)
 
         # 地点の座標を設定
         self.locations_normal = {
-            '1': [500, 500, 0],  # [x, y, theta]
+            '1': [-500, 500, 0],  # [x, y, theta]
             '2': [0, 500, 0],
             '3': [0, 0, 0]
         }
         self.locations_inverted = {
-            '1': [-500, 500, 0],  # [x, y, theta]
+            '1': [500, 500, 0],  # [x, y, theta]
             '2': [0, 500, 0],
             '3': [0, 0, 0]
         }
@@ -37,7 +34,7 @@ class ControllerNode(Node):
 
     def update_position_callback(self, msg):
         self.current_position = [msg.data[0], msg.data[1], msg.data[2]]
-        self.get_logger().info(f"Updated current position: {self.current_position}")
+     #   self.get_logger().info(f"Updated current position: {self.current_position}")
 
     def listener_callback(self, msg):
         data = msg.data.split(',')
@@ -51,7 +48,7 @@ class ControllerNode(Node):
         rx = int(data[9])
         ry = int(data[10])
 
-        self.get_logger().info(f"Received data: {data}")
+     #   self.get_logger().info(f"Received data: {data}")
 
         # 非常停止処理
         if emergency_stop == 1:
@@ -60,9 +57,9 @@ class ControllerNode(Node):
 
         # 手動操作モードの場合
         if mode == 1:
-            Vx = ly
-            Vy = lx
-            omega = rx
+            Vx = (rx-105)*2
+            Vy = (ry-107)*2
+            omega = (lx-102)
             self.send_velocity_command(Vx, Vy, omega, mode, behavior)
         else:
             # ボタン設定に基づいてターゲットを決定
@@ -83,14 +80,12 @@ class ControllerNode(Node):
         distance = math.sqrt(dx**2 + dy**2)
         direction = (math.degrees(math.atan2(dy, dx)) - 90) % 360
 
-        self.get_logger().info(f"Moving to target: {target} with direction {direction} and distance {distance}")
-
         if distance < 50:
             Vx = 0.0
             Vy = 0.0
         else:
-            Vx = min(self.max_speed, distance) * math.cos(math.radians(direction))
-            Vy = min(self.max_speed, distance) * math.sin(math.radians(direction))
+            Vx = min(self.max_speed, distance) * math.sin(math.radians(direction))
+            Vy = min(self.max_speed, distance) * math.cos(math.radians(direction))
 
         dtheta = (target_theta - self.current_position[2] + 360) % 360
         if dtheta > 180:
@@ -99,11 +94,13 @@ class ControllerNode(Node):
 
         self.send_velocity_command(Vx, Vy, omega, team_color, action_number)
 
+        self.get_logger().info(f"target:{target}  0={self.current_position[0]} 1={self.current_position[1]} 2={self.current_position[2]} Vx={Vx}, Vy={Vy}, Omega={omega} ")
+
     def send_velocity_command(self, Vx, Vy, omega, team_color, action_number):
         msg = Float32MultiArray()
         msg.data = [float(Vx), float(Vy), float(omega), float(team_color), float(action_number)]
         self.publisher_.publish(msg)
-        self.get_logger().info(f"Sent velocity command: Vx={Vx}, Vy={Vy}, Omega={omega}, Team Color={team_color}, Action Number={action_number}")
+       # self.get_logger().info(f"Sent velocity command: Vx={Vx}, Vy={Vy}, Omega={omega}, Team Color={team_color}, Action Number={action_number}")
 
 def main(args=None):
     rclpy.init(args=args)

@@ -5,7 +5,7 @@ import pyrealsense2 as rs
 
 class PositionNode(Node):
     def __init__(self):
-        super().__init__('position_node')  # ノード名を変更
+        super().__init__('position_node')  # ノード名
         self.subscription = self.create_subscription(
             Float32MultiArray,
             'robot_position',

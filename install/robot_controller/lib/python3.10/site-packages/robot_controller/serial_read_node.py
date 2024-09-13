@@ -8,7 +8,7 @@ class SerialReadNode(Node):
     def __init__(self):
         super().__init__('serial_read_node')
         self.publisher_ = self.create_publisher(Float32MultiArray, 'robot_position', 10)
-        self.serial_port = serial.Serial('/dev/ttyACM0', 115200, timeout=1)  # 実際のシリアルポートに変更
+        self.serial_port = serial.Serial('/dev/ttyACM0', 115200, timeout=1)  
         self.create_timer(0.1, self.read_data_from_mcu)
 
     def read_data_from_mcu(self):
