@@ -17,19 +17,19 @@ class ControllerNode(Node):
 
         # 地点の座標を設定
         self.locations_normal = {
-            '1': [-500, 500, 0],  # [x, y, theta]
-            '2': [0, 500, 0],
+            '1': [1500, 1500, 0],  # [x, y, theta]
+            '2': [0, 1500, 0],
             '3': [0, 0, 0]
         }
         self.locations_inverted = {
-            '1': [500, 500, 0],  # [x, y, theta]
-            '2': [0, 500, 0],
+            '1': [-1500, 1500, 0],  # [x, y, theta]
+            '2': [0, 1500, 0],
             '3': [0, 0, 0]
         }
         self.current_position = [0.0, 0.0, 0.0]  # 初期位置 [x, y, theta]
         self.max_speed = 500.0  # 最大速度 [mm/s]
-        self.max_accel = 50.0  # 最大加速度 [mm/s^2]
-        self.max_angular_speed = 30.0  # 最大角速度 [deg/s]
+        self.max_accel = 100.0  # 最大加速度 [mm/s^2]
+        self.max_angular_speed = 10.0  # 最大角速度 [deg/s]
         self.mode = 0  # モード初期値
 
     def update_position_callback(self, msg):
@@ -57,8 +57,8 @@ class ControllerNode(Node):
 
         # 手動操作モードの場合
         if mode == 1:
-            Vx = (rx-105)*5
-            Vy = (ry-107)*5
+            Vx = (rx-105)*-3
+            Vy = (ry-107)*3
             omega = (lx-102)
             self.send_velocity_command(Vx, Vy, omega, mode, behavior)
             self.get_logger().info(f"Vx={Vx}, Vy={Vy}, Omega={omega} ")
@@ -81,17 +81,17 @@ class ControllerNode(Node):
         distance = math.sqrt(dx**2 + dy**2)
         direction = (math.degrees(math.atan2(dy, dx)) - 90) % 360
 
-        if distance < 50:
-            Vx = 0.0
-            Vy = 0.0
-        else:
-            Vx = min(self.max_speed, distance) * math.sin(math.radians(direction))
-            Vy = min(self.max_speed, distance) * math.cos(math.radians(direction))
+        #if distance < 10:
+          #  Vx = 0.0
+         #   Vy = 0.0
+        #else:
+        Vx = min(self.max_speed, distance) * math.sin(math.radians(direction))
+        Vy = min(self.max_speed, distance) * math.cos(math.radians(direction))
 
         dtheta = (target_theta - self.current_position[2] + 360) % 360
         if dtheta > 180:
             dtheta -= 360
-        omega = max(min(dtheta, self.max_angular_speed), -self.max_angular_speed)
+        omega = max(min(dtheta, self.max_angular_speed), -self.max_angular_speed)*20
 
         self.send_velocity_command(Vx, Vy, omega, team_color, action_number)
 
