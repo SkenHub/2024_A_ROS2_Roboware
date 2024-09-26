@@ -27,7 +27,7 @@ class ControllerNode(Node):
             '3': [0, 0, 0]
         }
         self.current_position = [0.0, 0.0, 0.0]  # 初期位置 [x, y, theta]
-        self.max_speed = 500.0  # 最大速度 [mm/s]
+        self.max_speed = 800.0  # 最大速度 [mm/s]
         self.max_accel = 100.0  # 最大加速度 [mm/s^2]
         self.max_angular_speed = 10.0  # 最大角速度 [deg/s]
         self.mode = 0  # モード初期値
@@ -38,6 +38,12 @@ class ControllerNode(Node):
 
     def listener_callback(self, msg):
         data = msg.data.split(',')
+    
+    # データの長さが最低11個あるか確認する
+        if len(data) < 11:
+            self.get_logger().error(f"受信データの長さが不足しています: {len(data)}個の要素があり、最低でも11個が必要です")
+            return
+    
         behavior = int(data[0])
         mode = int(data[1])
         buttons = list(map(int, data[2:5]))
@@ -48,6 +54,9 @@ class ControllerNode(Node):
         rx = int(data[9])
         ry = int(data[10])
 
+    # その他の処理
+
+
      #   self.get_logger().info(f"Received data: {data}")
 
         # 非常停止処理
@@ -57,8 +66,8 @@ class ControllerNode(Node):
 
         # 手動操作モードの場合
         if mode == 1:
-            Vx = (rx-105)*-3
-            Vy = (ry-107)*3
+            Vx = (rx-105)*8
+            Vy = (ry-107)*8
             omega = (lx-102)
             self.send_velocity_command(Vx, Vy, omega, mode, behavior)
             self.get_logger().info(f"Vx={Vx}, Vy={Vy}, Omega={omega} ")
@@ -85,13 +94,13 @@ class ControllerNode(Node):
           #  Vx = 0.0
          #   Vy = 0.0
         #else:
-        Vx = min(self.max_speed, distance) * math.sin(math.radians(direction))
+        Vx = min(self.max_speed, distance) * math.sin(math.radians(direction)) *-1
         Vy = min(self.max_speed, distance) * math.cos(math.radians(direction))
 
         dtheta = (target_theta - self.current_position[2] + 360) % 360
         if dtheta > 180:
             dtheta -= 360
-        omega = max(min(dtheta, self.max_angular_speed), -self.max_angular_speed)*20
+        omega = max(min(dtheta, self.max_angular_speed), -self.max_angular_speed)
 
         self.send_velocity_command(Vx, Vy, omega, team_color, action_number)
 

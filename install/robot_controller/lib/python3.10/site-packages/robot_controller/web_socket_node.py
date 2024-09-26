@@ -10,10 +10,11 @@ import os
 from socket import SO_REUSEADDR, SOL_SOCKET, socket
 
 # ipアドレス、ポートの指定
-ipadress_ = '192.168.90.216'
+ipadress_ = '192.168.0.103'
 port_ = 8010
 #192.168.90.216 ノート
 #192.168.98.212　ミニ
+#192.168.0.103 Aiwifi
 
 # HTMLファイルのパスを指定
 path = '/home/altair/2024_A_ROS2_Roboware/src/robot_controller/R1_UI.txt'
@@ -31,6 +32,7 @@ with open(path, 'r') as f:
 # ROS 2 ノードの定義
 class WebSocketNode(Node):
     def __init__(self):
+        msg = String()
         super().__init__('web_socket_node')
         self.send_data = ''
 
@@ -53,12 +55,11 @@ class WebSocketNode(Node):
                 while True:
                     # クライアントからのデータを受信
                     receive_data = await websocket.receive_text()
-                    print(receive_data)
                     
                     # 受信したデータをROSトピックにパブリッシュ
-                    msg = String()
                     msg.data = receive_data
                     self.pub.publish(msg)
+                    print(msg.data)
                     # サブスクライブしたデータをクライアントに送信
                     string_send_data = ",".join(map(str, self.send_data))
                     await websocket.send_text(string_send_data)
