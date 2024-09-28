@@ -2,6 +2,7 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String, Float32MultiArray
 import math
+import pyttsx3
 
 class ControllerNode(Node):
     def __init__(self):
@@ -39,7 +40,7 @@ class ControllerNode(Node):
     def listener_callback(self, msg):
         data = msg.data.split(',')
     
-    # データの長さが最低11個あるか確認する
+        # データの長さが最低11個あるか確認する
         if len(data) < 11:
             self.get_logger().error(f"受信データの長さが不足しています: {len(data)}個の要素があり、最低でも11個が必要です")
             return
@@ -53,11 +54,6 @@ class ControllerNode(Node):
         ly = int(data[8])
         rx = int(data[9])
         ry = int(data[10])
-
-    # その他の処理
-
-
-     #   self.get_logger().info(f"Received data: {data}")
 
         # 非常停止処理
         if emergency_stop == 1:
@@ -90,10 +86,6 @@ class ControllerNode(Node):
         distance = math.sqrt(dx**2 + dy**2)
         direction = (math.degrees(math.atan2(dy, dx)) - 90) % 360
 
-        #if distance < 10:
-          #  Vx = 0.0
-         #   Vy = 0.0
-        #else:
         Vx = min(self.max_speed, distance) * math.sin(math.radians(direction)) *-1
         Vy = min(self.max_speed, distance) * math.cos(math.radians(direction))
 
@@ -110,7 +102,6 @@ class ControllerNode(Node):
         msg = Float32MultiArray()
         msg.data = [float(Vx), float(Vy), float(omega), float(team_color), float(action_number)]
         self.publisher_.publish(msg)
-       # self.get_logger().info(f"Sent velocity command: Vx={Vx}, Vy={Vy}, Omega={omega}, Team Color={team_color}, Action Number={action_number}")
 
 def main(args=None):
     rclpy.init(args=args)
