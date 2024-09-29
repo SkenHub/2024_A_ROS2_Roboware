@@ -1,0 +1,29 @@
+[1.228s] Invoking command in '/home/altair/2024_A_ROS2_Roboware/src/robot_controller': PYTHONPATH=/home/altair/2024_A_ROS2_Roboware/build/robot_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/robot_controller build --build-base /home/altair/2024_A_ROS2_Roboware/build/robot_controller/build install --record /home/altair/2024_A_ROS2_Roboware/build/robot_controller/install.log --single-version-externally-managed install_data
+[1.577s] running egg_info
+[1.604s] writing ../../build/robot_controller/robot_controller.egg-info/PKG-INFO
+[1.605s] writing dependency_links to ../../build/robot_controller/robot_controller.egg-info/dependency_links.txt
+[1.605s] writing entry points to ../../build/robot_controller/robot_controller.egg-info/entry_points.txt
+[1.605s] writing requirements to ../../build/robot_controller/robot_controller.egg-info/requires.txt
+[1.605s] writing top-level names to ../../build/robot_controller/robot_controller.egg-info/top_level.txt
+[1.662s] reading manifest file '../../build/robot_controller/robot_controller.egg-info/SOURCES.txt'
+[1.663s] writing manifest file '../../build/robot_controller/robot_controller.egg-info/SOURCES.txt'
+[1.663s] running build
+[1.663s] running build_py
+[1.664s] copying robot_controller/controller_node.py -> /home/altair/2024_A_ROS2_Roboware/build/robot_controller/build/lib/robot_controller
+[1.664s] running install
+[1.670s] running install_lib
+[1.698s] copying /home/altair/2024_A_ROS2_Roboware/build/robot_controller/build/lib/robot_controller/controller_node.py -> /home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/python3.10/site-packages/robot_controller
+[1.698s] byte-compiling /home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/python3.10/site-packages/robot_controller/controller_node.py to controller_node.cpython-310.pyc
+[1.700s] running install_data
+[1.700s] running install_egg_info
+[1.728s] removing '/home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/python3.10/site-packages/robot_controller-2.0.0-py3.10.egg-info' (and everything under it)
+[1.729s] Copying ../../build/robot_controller/robot_controller.egg-info to /home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/python3.10/site-packages/robot_controller-2.0.0-py3.10.egg-info
+[1.730s] running install_scripts
+[1.984s] Installing controller_node script to /home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/robot_controller
+[1.985s] Installing position_node script to /home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/robot_controller
+[1.985s] Installing robot_position_to_rviz_node script to /home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/robot_controller
+[1.985s] Installing serial_read_node script to /home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/robot_controller
+[1.985s] Installing serial_send_node script to /home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/robot_controller
+[1.985s] Installing web_socket_node script to /home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/robot_controller
+[1.986s] writing list of installed files to '/home/altair/2024_A_ROS2_Roboware/build/robot_controller/install.log'
+[2.016s] Invoked command in '/home/altair/2024_A_ROS2_Roboware/src/robot_controller' returned '0': PYTHONPATH=/home/altair/2024_A_ROS2_Roboware/build/robot_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/robot_controller build --build-base /home/altair/2024_A_ROS2_Roboware/build/robot_controller/build install --record /home/altair/2024_A_ROS2_Roboware/build/robot_controller/install.log --single-version-externally-managed install_data

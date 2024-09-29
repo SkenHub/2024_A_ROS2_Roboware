@@ -67,11 +67,19 @@ class ControllerNode(Node):
 
         # 手動操作モードの場合
         elif mode == 1:
-            Vx = (rx-105)*10
-            Vy = (ry-107)*10
+          if not behavior == 3:
+            Vx = (rx-105)*3
+            Vy = (ry-107)*100
             omega = (lx-102)/2
             self.send_velocity_command(Vx, Vy, omega, mode, behavior)
             self.get_logger().info(f"Vx={Vx}, Vy={Vy}, Omega={omega} ")
+          else:
+            Vx = 0
+            Vy = 0
+            omega = 0
+            self.send_velocity_command(Vx, Vy, omega, mode, behavior)
+            self.get_logger().info(f"Vx={Vx}, Vy={Vy}, Omega={omega} ")
+              
         else:
             # ボタン設定に基づいてターゲットを決定
             if any(buttons):
@@ -86,9 +94,9 @@ class ControllerNode(Node):
 
     def move_to_target(self, target, team_color, action_number):
         if self.speedmode == 0:
-            self.max_speed=500
+            self.max_speed = 500
         else:
-            self.max_speed=800
+            self.max_speed = 800
 
         x, y, target_theta = target
         dx = x - self.current_position[0]
@@ -96,8 +104,19 @@ class ControllerNode(Node):
         distance = math.sqrt(dx**2 + dy**2)
         direction = (math.degrees(math.atan2(dy, dx)) - 90) % 360
 
-        Vx = min(self.max_speed, distance) * math.sin(math.radians(direction)) *-1
-        Vy = min(self.max_speed, distance) * math.cos(math.radians(direction))
+        # 現在の速度に基づいて目標速度を制限
+        current_speed = math.sqrt(self.current_position[0]**2 + self.current_position[1]**2)  # 現在の速度
+
+        # 目標速度と加速度制限を考慮して速度を決定
+##############################  目標速度と加速度制限を考慮して速度を決定  #########################################################################
+        desired_speed = min(self.max_speed, distance)
+        if desired_speed > current_speed + self.max_accel:
+            desired_speed = current_speed + self.max_accel
+        elif desired_speed < current_speed - self.max_accel:
+            desired_speed = current_speed - self.max_accel
+#####################################################################################################################
+        Vx = desired_speed * math.sin(math.radians(direction)) * -1
+        Vy = desired_speed * math.cos(math.radians(direction))
 
         dtheta = (target_theta - self.current_position[2] + 360) % 360
         if dtheta > 180:
@@ -106,7 +125,7 @@ class ControllerNode(Node):
 
         self.send_velocity_command(Vx, Vy, omega, team_color, action_number)
 
-        self.get_logger().info(f"target:{target}  0={self.current_position[0]} 1={self.current_position[1]} 2={self.current_position[2]} Vx={Vx}, Vy={Vy}, Omega={omega} ")
+        self.get_logger().info(f"target:{target}  0={self.current_position[0]} 1={self.current_position[1]} 2={self.current_position[2]} Vx={Vx}, Vy={Vy}, Omega={omega}")
 
     def send_velocity_command(self, Vx, Vy, omega, team_color, action_number):
         msg = Float32MultiArray()
