@@ -435,7 +435,7 @@
             minutes = 0, seconds = 0, millis = 0, interval = 0, count = 0,
             position_x = 0, position_y = 0, position_direction,
             rx, ry, lx, ly,
-            cross, circle, square, triangle, lb, rb, lt, rt, SEL, STA, la, ra, up, down, left, right;
+            cross, circle, square, triangle, l1 = [0, 0], r1 = [0, 0], l2, r2, create, option, l3, r3, up, down, left, right, l1_count, r1_count;
 
         let Send_Data = "", Receive_Data = "";
 
@@ -875,8 +875,8 @@
                 circle = gamepad.buttons[1].pressed ? 1 : 0;
                 square = gamepad.buttons[2].pressed ? 1 : 0;
                 triangle = gamepad.buttons[3].pressed ? 1 : 0;
-                l1 = gamepad.buttons[4].pressed ? 1 : 0;
-                r1 = gamepad.buttons[5].pressed ? 1 : 0;
+                l1[0] = gamepad.buttons[4].pressed ? 1 : 0;
+                r1[0] = gamepad.buttons[5].pressed ? 1 : 0;
                 l2 = gamepad.buttons[6].pressed ? 1 : 0; //value * 100;　押し感はこっち
                 r2 = gamepad.buttons[7].pressed ? 1 : 0; //value * 100;　押し感はこっち
                 create = gamepad.buttons[8].pressed ? 1 : 0;
@@ -889,6 +889,16 @@
                 right = gamepad.buttons[15].pressed ? 1 : 0;
                 ps = gamepad.buttons[16].pressed ? 1 : 0;
                 touchpad = gamepad.buttons[17].pressed ? 1 : 0;
+
+                if (l1[0] == 1 && l1[1] == 0) {
+                    button_up();
+                }
+
+                if (r1[0] == 1 && r1[1] == 0) {
+                    button_down();
+                }
+                l1[1] = l1[0];
+                r1[1] = r1[0];
             }
         }
 
