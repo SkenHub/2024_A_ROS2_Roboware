@@ -2,7 +2,6 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String, Float32MultiArray
 import math
-import pyttsx3
 
 class ControllerNode(Node):
     def __init__(self):
@@ -20,18 +19,21 @@ class ControllerNode(Node):
         self.locations_normal = {
             '1': [1500, 1500, 0],  # [x, y, theta]
             '2': [0, 1500, 0],
-            '3': [0, 0, 0]
+            '3': [0, 0, 0],
+            '4': [3000, 1500, 0]
         }
         self.locations_inverted = {
             '1': [-1500, 1500, 0],  # [x, y, theta]
             '2': [0, 1500, 0],
-            '3': [0, 0, 0]
+            '3': [0, 0, 0],
+            '4': [-3000, 1500, 0]
         }
         self.current_position = [0.0, 0.0, 0.0]  # 初期位置 [x, y, theta]
-        self.max_speed = 800.0  # 最大速度 [mm/s]
+        self.max_speed = 800.0  # ノーマルモード最大速度 [mm/s]
         self.max_accel = 100.0  # 最大加速度 [mm/s^2]
         self.max_angular_speed = 10.0  # 最大角速度 [deg/s]
         self.mode = 0  # モード初期値
+        self.speedmode = 0 #スピードモード
 
     def update_position_callback(self, msg):
         self.current_position = [msg.data[0], msg.data[1], msg.data[2]]
@@ -41,19 +43,20 @@ class ControllerNode(Node):
         data = msg.data.split(',')
     
         # データの長さが最低11個あるか確認する
-        if len(data) < 11:
-            self.get_logger().error(f"受信データの長さが不足しています: {len(data)}個の要素があり、最低でも11個が必要です")
+        if len(data) < 13:
+            self.get_logger().error(f"受信データの長さが不足しています: {len(data)}個の要素があり、最低でも13個が必要です")
             return
     
         behavior = int(data[0])
         mode = int(data[1])
-        buttons = list(map(int, data[2:5]))
-        color = data[5]
-        emergency_stop = int(data[6])
-        lx = int(data[7])
-        ly = int(data[8])
-        rx = int(data[9])
-        ry = int(data[10])
+        buttons = list(map(int, data[2:6]))
+        color = data[6]
+        emergency_stop = int(data[7])
+        lx = int(data[8])
+        ly = int(data[9])
+        rx = int(data[10])
+        ry = int(data[11])
+        self.speedmode = int(data[12])
 
         # 非常停止処理
         if emergency_stop == 1:
@@ -61,10 +64,10 @@ class ControllerNode(Node):
             return
 
         # 手動操作モードの場合
-        if mode == 1:
-            Vx = (rx-105)*8
-            Vy = (ry-107)*8
-            omega = (lx-102)
+        elif mode == 1:
+            Vx = (rx-105)*10
+            Vy = (ry-107)*10
+            omega = (lx-102)/2
             self.send_velocity_command(Vx, Vy, omega, mode, behavior)
             self.get_logger().info(f"Vx={Vx}, Vy={Vy}, Omega={omega} ")
         else:
@@ -80,6 +83,11 @@ class ControllerNode(Node):
                         break
 
     def move_to_target(self, target, team_color, action_number):
+        if self.speedmode == 0:
+            self.max_speed=500
+        else:
+            self.max_speed=800
+
         x, y, target_theta = target
         dx = x - self.current_position[0]
         dy = y - self.current_position[1]
