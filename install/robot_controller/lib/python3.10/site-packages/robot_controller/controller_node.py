@@ -68,8 +68,14 @@ class ControllerNode(Node):
         # 手動操作モードの場合
         elif mode == 1:
           if not behavior == 3:
-            Vx = (rx-105)*3
-            Vy = (ry-107)*100
+            if self.speedmode == 0:
+             self.nx =5
+             self.ny =5
+            else:
+             self.nx =0
+             self.ny =100
+            Vx = (rx-105)*self.nx
+            Vy = (ry-107)*self.ny
             omega = (lx-102)/2
             self.send_velocity_command(Vx, Vy, omega, mode, behavior)
             self.get_logger().info(f"Vx={Vx}, Vy={Vy}, Omega={omega} ")
