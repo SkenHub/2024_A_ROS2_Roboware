@@ -22,8 +22,7 @@ class SerialSendNode(Node):
             10
         )
 
-        self.serial_port = serial.Serial('/dev/ttyACM0', 115200, timeout=1)  # 実際のシリアルポートに変更
-
+        self.serial_port = serial.Serial('/dev/ttyACM0', 115200, timeout=1)
         # 初期値を設定
         self.command_number = 0
         self.mode = 0

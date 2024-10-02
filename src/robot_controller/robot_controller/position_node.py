@@ -21,8 +21,8 @@ class PositionNode(Node):
         self.current_position = [0.0, 0.0, 0.0]
         self.realsense_position = [0.0, 0.0, 0.0]
         self.use_realsense = False  # RealSenseカメラの使用を示すフラグ
-        self.realsense_weight = 0.6
-        self.microcontroller_weight = 0.4
+        self.realsense_weight = 0.0
+        self.microcontroller_weight = 1.0
 
         # RealSenseの初期化
         try:

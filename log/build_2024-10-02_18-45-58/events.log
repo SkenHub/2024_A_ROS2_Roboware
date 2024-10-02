@@ -1,0 +1,115 @@
+[0.000000] (-) TimerEvent: {}
+[0.000456] (robot_controller) JobQueued: {'identifier': 'robot_controller', 'dependencies': OrderedDict()}
+[0.000588] (robot_controller) JobStarted: {'identifier': 'robot_controller'}
+[0.096850] (-) TimerEvent: {}
+[0.197440] (-) TimerEvent: {}
+[0.298057] (-) TimerEvent: {}
+[0.398603] (-) TimerEvent: {}
+[0.499153] (-) TimerEvent: {}
+[0.599745] (-) TimerEvent: {}
+[0.700374] (-) TimerEvent: {}
+[0.800953] (-) TimerEvent: {}
+[0.902724] (-) TimerEvent: {}
+[1.003376] (-) TimerEvent: {}
+[1.104050] (-) TimerEvent: {}
+[1.204661] (-) TimerEvent: {}
+[1.305306] (-) TimerEvent: {}
+[1.405937] (-) TimerEvent: {}
+[1.506585] (-) TimerEvent: {}
+[1.607221] (-) TimerEvent: {}
+[1.707858] (-) TimerEvent: {}
+[1.808515] (-) TimerEvent: {}
+[1.909150] (-) TimerEvent: {}
+[2.009778] (-) TimerEvent: {}
+[2.110442] (-) TimerEvent: {}
+[2.211124] (-) TimerEvent: {}
+[2.311749] (-) TimerEvent: {}
+[2.412410] (-) TimerEvent: {}
+[2.513073] (-) TimerEvent: {}
+[2.613702] (-) TimerEvent: {}
+[2.714362] (-) TimerEvent: {}
+[2.814998] (-) TimerEvent: {}
+[2.915658] (-) TimerEvent: {}
+[3.016356] (-) TimerEvent: {}
+[3.117102] (-) TimerEvent: {}
+[3.217899] (-) TimerEvent: {}
+[3.318736] (-) TimerEvent: {}
+[3.419576] (-) TimerEvent: {}
+[3.520362] (-) TimerEvent: {}
+[3.621165] (-) TimerEvent: {}
+[3.722123] (-) TimerEvent: {}
+[3.823122] (-) TimerEvent: {}
+[3.923913] (-) TimerEvent: {}
+[4.024737] (-) TimerEvent: {}
+[4.125566] (-) TimerEvent: {}
+[4.226367] (-) TimerEvent: {}
+[4.327165] (-) TimerEvent: {}
+[4.427954] (-) TimerEvent: {}
+[4.528788] (-) TimerEvent: {}
+[4.629669] (-) TimerEvent: {}
+[4.730641] (-) TimerEvent: {}
+[4.831746] (-) TimerEvent: {}
+[4.868363] (robot_controller) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/robot_controller', 'build', '--build-base', '/home/altair/2024_A_ROS2_Roboware/build/robot_controller/build', 'install', '--record', '/home/altair/2024_A_ROS2_Roboware/build/robot_controller/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/altair/2024_A_ROS2_Roboware/src/robot_controller', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'LANGUAGE': 'ja:en', 'USER': 'altair', 'LC_TIME': 'ja_JP.UTF-8', 'XDG_SESSION_TYPE': 'wayland', 'STM32CubeMX_PATH': '/home/altair/STM32CubeMX', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/usr/local/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/home/altair', 'OLDPWD': '/home/altair', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'ja_JP.UTF-8', 'SYSTEMD_EXEC_PID': '1313', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'ROS_DISTRO': 'humble', 'LOGNAME': 'altair', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'altair', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/home/altair/.local/bin:/home/altair/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/altair/bin:/home/altair/bin', 'SESSION_MANAGER': 'local/altair-ThinkPad-L380:@/tmp/.ICE-unix/1284,unix/altair-ThinkPad-L380:/tmp/.ICE-unix/1284', 'PAPERSIZE': 'a4', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'ja_JP.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/cf78d9cc_985f_4647_bf50_36be065da717', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'ja_JP.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'ja_JP.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.BSJZU2', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'GNOME_TERMINAL_SERVICE': ':1.115', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '1', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'SHELL': '/bin/bash', 'LC_NAME': 'ja_JP.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'ja_JP.UTF-8', 'LC_IDENTIFICATION': 'ja_JP.UTF-8', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/altair/2024_A_ROS2_Roboware/build/robot_controller', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/altair/2024_A_ROS2_Roboware/build/robot_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'LC_NUMERIC': 'ja_JP.UTF-8', 'LC_PAPER': 'ja_JP.UTF-8', 'COLCON': '1', 'VTE_VERSION': '6800'}, 'shell': False}
+[4.931980] (-) TimerEvent: {}
+[5.032816] (-) TimerEvent: {}
+[5.133643] (-) TimerEvent: {}
+[5.234474] (-) TimerEvent: {}
+[5.335214] (-) TimerEvent: {}
+[5.435999] (-) TimerEvent: {}
+[5.536834] (-) TimerEvent: {}
+[5.637662] (-) TimerEvent: {}
+[5.738507] (-) TimerEvent: {}
+[5.839325] (-) TimerEvent: {}
+[5.940150] (-) TimerEvent: {}
+[6.040935] (-) TimerEvent: {}
+[6.141769] (-) TimerEvent: {}
+[6.242605] (-) TimerEvent: {}
+[6.343374] (-) TimerEvent: {}
+[6.444155] (-) TimerEvent: {}
+[6.444995] (robot_controller) StdoutLine: {'line': b'running egg_info\n'}
+[6.544337] (-) TimerEvent: {}
+[6.572698] (robot_controller) StdoutLine: {'line': b'writing ../../build/robot_controller/robot_controller.egg-info/PKG-INFO\n'}
+[6.573897] (robot_controller) StdoutLine: {'line': b'writing dependency_links to ../../build/robot_controller/robot_controller.egg-info/dependency_links.txt\n'}
+[6.575487] (robot_controller) StdoutLine: {'line': b'writing entry points to ../../build/robot_controller/robot_controller.egg-info/entry_points.txt\n'}
+[6.576426] (robot_controller) StdoutLine: {'line': b'writing requirements to ../../build/robot_controller/robot_controller.egg-info/requires.txt\n'}
+[6.577269] (robot_controller) StdoutLine: {'line': b'writing top-level names to ../../build/robot_controller/robot_controller.egg-info/top_level.txt\n'}
+[6.644564] (-) TimerEvent: {}
+[6.745242] (-) TimerEvent: {}
+[6.833402] (robot_controller) StdoutLine: {'line': b"reading manifest file '../../build/robot_controller/robot_controller.egg-info/SOURCES.txt'\n"}
+[6.837882] (robot_controller) StdoutLine: {'line': b"writing manifest file '../../build/robot_controller/robot_controller.egg-info/SOURCES.txt'\n"}
+[6.838753] (robot_controller) StdoutLine: {'line': b'running build\n'}
+[6.839268] (robot_controller) StdoutLine: {'line': b'running build_py\n'}
+[6.841690] (robot_controller) StdoutLine: {'line': b'running install\n'}
+[6.845422] (-) TimerEvent: {}
+[6.866165] (robot_controller) StdoutLine: {'line': b'running install_lib\n'}
+[6.945659] (-) TimerEvent: {}
+[6.998274] (robot_controller) StdoutLine: {'line': b'running install_data\n'}
+[6.999323] (robot_controller) StdoutLine: {'line': b'running install_egg_info\n'}
+[7.045863] (-) TimerEvent: {}
+[7.130821] (robot_controller) StdoutLine: {'line': b"removing '/home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/python3.10/site-packages/robot_controller-2.0.0-py3.10.egg-info' (and everything under it)\n"}
+[7.132418] (robot_controller) StdoutLine: {'line': b'Copying ../../build/robot_controller/robot_controller.egg-info to /home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/python3.10/site-packages/robot_controller-2.0.0-py3.10.egg-info\n'}
+[7.136745] (robot_controller) StdoutLine: {'line': b'running install_scripts\n'}
+[7.146102] (-) TimerEvent: {}
+[7.246727] (-) TimerEvent: {}
+[7.347487] (-) TimerEvent: {}
+[7.448176] (-) TimerEvent: {}
+[7.548862] (-) TimerEvent: {}
+[7.649583] (-) TimerEvent: {}
+[7.750220] (-) TimerEvent: {}
+[7.850908] (-) TimerEvent: {}
+[7.951656] (-) TimerEvent: {}
+[8.052354] (-) TimerEvent: {}
+[8.153088] (-) TimerEvent: {}
+[8.253766] (-) TimerEvent: {}
+[8.299788] (robot_controller) StdoutLine: {'line': b'Installing controller_node script to /home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/robot_controller\n'}
+[8.300767] (robot_controller) StdoutLine: {'line': b'Installing position_node script to /home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/robot_controller\n'}
+[8.301570] (robot_controller) StdoutLine: {'line': b'Installing robot_position_to_rviz_node script to /home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/robot_controller\n'}
+[8.302274] (robot_controller) StdoutLine: {'line': b'Installing serial_read_node script to /home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/robot_controller\n'}
+[8.302991] (robot_controller) StdoutLine: {'line': b'Installing serial_send_node script to /home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/robot_controller\n'}
+[8.303774] (robot_controller) StdoutLine: {'line': b'Installing web_socket_node script to /home/altair/2024_A_ROS2_Roboware/install/robot_controller/lib/robot_controller\n'}
+[8.305852] (robot_controller) StdoutLine: {'line': b"writing list of installed files to '/home/altair/2024_A_ROS2_Roboware/build/robot_controller/install.log'\n"}
+[8.354062] (-) TimerEvent: {}
+[8.401097] (robot_controller) CommandEnded: {'returncode': 0}
+[8.450963] (robot_controller) JobEnded: {'identifier': 'robot_controller', 'rc': 0}
+[8.454586] (-) TimerEvent: {}
+[8.454902] (-) EventReactorShutdown: {}

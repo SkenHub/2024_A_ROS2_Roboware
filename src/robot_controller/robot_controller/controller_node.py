@@ -32,7 +32,7 @@ class ControllerNode(Node):
         }
         self.current_position = [0.0, 0.0, 0.0]  # 初期位置 [x, y, theta]
         self.max_speed = 800.0  # ノーマルモード最大速度 [mm/s]
-        self.max_accel = 100.0  # 最大加速度 [mm/s^2]
+        self.max_accel = 500.0  # 最大加速度 [mm/s^2]
         self.max_angular_speed = 10.0  # 最大角速度 [deg/s]
         self.mode = 0  # モード初期値
         self.speedmode = 0 #スピードモード
@@ -67,13 +67,13 @@ class ControllerNode(Node):
 
         # 手動操作モードの場合
         elif mode == 1:
-          if not behavior == 3:
+          if not behavior == 21:
             if self.speedmode == 0:
-             self.nx =5
-             self.ny =5
+             self.nx =7
+             self.ny =7
             else:
-             self.nx =0
-             self.ny =100
+             self.nx =2
+             self.ny =50
             Vx = (rx-105)*self.nx
             Vy = (ry-107)*self.ny
             omega = (lx-102)/2
@@ -101,8 +101,10 @@ class ControllerNode(Node):
     def move_to_target(self, target, team_color, action_number):
         if self.speedmode == 0:
             self.max_speed = 500
+            self.max_accel = 500
         else:
             self.max_speed = 800
+            self.max_accel = 800
 
         x, y, target_theta = target
         dx = x - self.current_position[0]
@@ -113,7 +115,6 @@ class ControllerNode(Node):
         # 現在の速度に基づいて目標速度を制限
         current_speed = math.sqrt(self.current_position[0]**2 + self.current_position[1]**2)  # 現在の速度
 
-        # 目標速度と加速度制限を考慮して速度を決定
 ##############################  目標速度と加速度制限を考慮して速度を決定  #########################################################################
         desired_speed = min(self.max_speed, distance)
         if desired_speed > current_speed + self.max_accel:
