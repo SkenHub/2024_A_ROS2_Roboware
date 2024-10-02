@@ -122,8 +122,8 @@ class ControllerNode(Node):
         elif desired_speed < current_speed - self.max_accel:
             desired_speed = current_speed - self.max_accel
 #####################################################################################################################
-        Vx = desired_speed * math.sin(math.radians(direction)) * -1
-        Vy = desired_speed * math.cos(math.radians(direction))
+        Vx = self.max_speed * math.sin(math.radians(direction)) * -1
+        Vy = self.max_speed * math.cos(math.radians(direction))
 
         dtheta = (target_theta - self.current_position[2] + 360) % 360
         if dtheta > 180:
