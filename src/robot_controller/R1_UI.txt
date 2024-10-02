@@ -900,12 +900,12 @@
             position_y = parseInt(dataArray[1]);
             position_direction = 90 - parseInt(dataArray[2]);
             if (color == 1) {
-                robot.style.right = (position_x * 0.1 + 16.5) + "px";
+                robot.style.right = (-position_x * 0.1 + 16.5) + "px";
             } else if (color == 0) {
                 robot.style.right = (-position_x * 0.1 + 366.5) + "px";
             }
             robot.style.bottom = (position_y * 0.1 + 16.55) + "px";
-            robot.style.transform = "rotate(" + position_direction + "deg)";
+            robot.style.transform = "rotate(" + -position_direction + "deg)";
             position_X.innerHTML = "X: " + position_x;
             position_Y.innerHTML = "Y: " + position_y;
         }
