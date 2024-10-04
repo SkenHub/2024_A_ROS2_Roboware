@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set up the ROS 2 environment
-colcon build
+#colcon build
 source /opt/ros/humble/setup.bash
 source ~/2024_A_ROS2_Roboware/install/setup.bash
 

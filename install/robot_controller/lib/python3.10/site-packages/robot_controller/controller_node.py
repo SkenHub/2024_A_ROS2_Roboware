@@ -17,22 +17,22 @@ class ControllerNode(Node):
 
         # 地点の座標を設定
         self.locations_normal = {
-            '1': [1500, 1500, 0],  # [x, y, theta]
+            '1': [1800, 1430, 0],  # [x, y, theta]
             '2': [0, 1500, 0],
             '3': [0, 0, 0],
             '4': [3000, 1500, 0],
             '5': [3000, 1500, 90]
         }
         self.locations_inverted = {
-            '1': [-1500, 1500, 0],  # [x, y, theta]
+            '1': [-1700, 1430, 0],  # [x, y, theta]
             '2': [0, 1500, 0],
             '3': [0, 0, 0],
             '4': [-3000, 1500, 0],
             '5': [0, 1500, 90]
         }
         self.current_position = [0.0, 0.0, 0.0]  # 初期位置 [x, y, theta]
-        self.max_speed = 800.0  # ノーマルモード最大速度 [mm/s]
-        self.max_accel = 500.0  # 最大加速度 [mm/s^2]
+        self.max_speed = 1000.0  # ノーマルモード最大速度 [mm/s]
+        self.max_accel = 600.0  # 最大加速度 [mm/s^2]
         self.max_angular_speed = 10.0  # 最大角速度 [deg/s]
         self.mode = 0  # モード初期値
         self.speedmode = 0 #スピードモード
@@ -114,16 +114,9 @@ class ControllerNode(Node):
 
         # 現在の速度に基づいて目標速度を制限
         current_speed = math.sqrt(self.current_position[0]**2 + self.current_position[1]**2)  # 現在の速度
+        Vx = min(self.max_speed, distance) * math.sin(math.radians(direction))*-1
+        Vy = min(self.max_speed, distance) * math.cos(math.radians(direction))
 
-##############################  目標速度と加速度制限を考慮して速度を決定  #########################################################################
-        desired_speed = min(self.max_speed, distance)
-        if desired_speed > current_speed + self.max_accel:
-            desired_speed = current_speed + self.max_accel
-        elif desired_speed < current_speed - self.max_accel:
-            desired_speed = current_speed - self.max_accel
-#####################################################################################################################
-        Vx = desired_speed * math.sin(math.radians(direction)) * -1
-        Vy = desired_speed * math.cos(math.radians(direction))
 
         dtheta = (target_theta - self.current_position[2] + 360) % 360
         if dtheta > 180:
