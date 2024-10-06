@@ -10,11 +10,12 @@ import os
 from socket import SO_REUSEADDR, SOL_SOCKET, socket
 
 # ipアドレス、ポートの指定
-ipadress_ = '192.168.0.103'
+ipadress_ = '192.168.30.216'
 port_ = 8080
 #192.168.90.216 ノート
 #192.168.98.212　ミニ
 #192.168.0.103 Aiwifi
+#192.168.30.216
 
 # HTMLファイルのパスを指定
 path = '/home/altair/2024_A_ROS2_Roboware/src/robot_controller/R1_UI.txt'
